@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>3분 부동산 admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            color: #000;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #F3F3F4;
+        }
+
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .wrap {
+            width: 80%;
+            margin: 0 auto;
+            /* border: 5px solid lime; */
+        }
+
+        /* HEADER */
+        header{
+            padding:20px;
+            margin:0 auto;
+            /* border:1px solid red; */
+        }
+
+        header h1{
+            padding:20px;
+            /* border:1px solid red; */
+            text-align: center;
+        }
+
+        /* NAV */
+        nav,
+        section {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px solid #E7EAEC;
+            width: 20%;
+        }
+
+        nav {
+            float: left;
+        }
+
+        nav ul {
+            /* border: 1px solid blue; */
+            height: 100vh
+        }
+
+        nav ul li {
+            /* border: 1px solid red; */
+            font-weight: 700;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 10px 0;
+        }
+
+        /* SECTION */
+        section {
+            padding: 10px 20px;
+            float: left;
+            width: 80%;
+        }
+
+        section .search_bar {
+            text-align: right;
+            margin: 20px 0;
+            /* border: 1px solid red; */
+        }
+
+        section .search_bar input {
+            width:300px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #c8c9ca;
+            margin-right:15px;
+        }
+
+        section .search_bar .fas {
+            padding-right: 20px;
+            color: #1AB394;
+            font-size: 25px;
+            vertical-align: middle;
+        }
+
+        section .search_bar button {
+            padding: 10px
+        }
+
+        section ul {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid #E7EAEC;
+        }
+
+        section ul li {
+            font-size: 13px;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 15px 0;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div class="wrap clear">
+        <header>
+            <h1>3분 부동산</h1>
+
+        </header>
+        <nav>
+            <ul>
+                <li><a href="">LIST</a></li>
+                <li><a href="">ADMIN</a></li>
+            </ul>
+        </nav>
+        <section>
+            <div class="search_bar">
+                <input type="search">
+                <a href=""><i class="fas fa-search"></i></a>
+                <a href=""><i class="fas fa-cog"></i></a>
+            </div>
+            <ul>
+                <li><a href="">매물번호</a></li>
+                <li><a href="">담당자이름</a></li>
+                <li><a href="">전화번호</a></li>
+                <li><a href="">가격</a></li>
+                <li><a href="">이름</a></li>
+                <li><a href="">이름</a></li>
+                <li><a href="">이름</a></li>
+            </ul>
+            <script>
+                for (let i = 0; i <= 20; i++) {
+                    document.write(
+                        `<ul>
+                        <li><a href="">100</a></li>
+                        <li><a href="">최용호</a></li>
+                        <li><a href="">010-0000-0000</a></li>
+                        <li><a href="">경기도 용인시 기흥구</a></li>
+                        <li><a href="">이름</a></li>
+                        <li><a href="">이름</a></li>
+                        <li><a href="">이름</a></li>
+                    </ul>
+                    `)
+                }
+            </script>
+        </section>
+    </div>
+
+
+</body>
+
+</html>
