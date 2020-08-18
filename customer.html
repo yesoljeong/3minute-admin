@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
+        rel="stylesheet">
+    <title>3분 부동산 admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+            color: #676A6C;
+        }
+
+        body {
+            background-color: #F3F3F4;
+        }
+
+        .clear::after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        /* HEADER */
+        header {
+            position: relative;
+            height: 100px;
+        }
+
+        header h1 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            text-align: center;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: #fff;
+            background-color: #1AB394;
+            height: 100px;
+        }
+
+        header .fas {
+            color: #fff;
+        }
+
+        /* NAV */
+        nav,
+        section {
+            background-color: #fff;
+            border: 1px solid #E7EAEC;
+        }
+
+        nav {
+            float: left;
+            background-color: #233645;
+            position: fixed;
+            top: 100px;
+            width: 18%;
+            height: 100vh;
+            /* border:1px solid red; */
+        }
+
+        nav .login_info {
+            /* border:1px solid red; */
+            text-align: center;
+            padding: 50px 0;
+            background-color: #233645;
+        }
+
+        nav .login_info .fas {
+            border: 1px solid red;
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        nav .login_info h3 {
+            border: 1px solid red;
+            color: #fff;
+        }
+
+        nav ul li {
+            font-weight: 700;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 10px 20px;
+        }
+
+        nav ul li:nth-child(3) {
+            background-color: #1AB394;
+            color: #fff;
+        }
+
+        nav ul li:nth-child(3) span,
+        nav ul li:nth-child(3) .fas {
+            color: #fff;
+        }
+
+        nav ul li a {
+            vertical-align: middle;
+            color: #9FAABE;
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+
+        nav .fas {
+            font-size: 20px;
+            vertical-align: middle;
+            margin-right: 15px;
+            color: #9FAABE;
+        }
+
+        /* SECTION */
+        section {
+            padding: 10px 20px;
+            float: right;
+            width: 82%;
+            margin-bottom: 150px;
+        }
+
+        section .top {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 80px;
+        }
+
+        section .top button {
+            width: 80px;
+            padding: 10px;
+            background-color: #1AB394;
+            border: 1px solid #c8c9ca;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        section .search_bar {
+            text-align: right;
+        }
+
+        section .search_bar input {
+            width: 300px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #c8c9ca;
+            margin-right: 15px;
+        }
+
+        section .search_bar .fas {
+            padding-right: 20px;
+            color: #1AB394;
+            font-size: 25px;
+            vertical-align: middle;
+        }
+
+        section ul {
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid #E7EAEC;
+            align-items: center;
+        }
+
+        section .table_title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        section ul li {
+            font-size: 14px;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            padding: 10px 0;
+        }
+
+        section .table_data li .fas {
+            font-size: 18px;
+        }
+
+        section .table_data li .fas:hover {
+            color: #1AB394;
+
+        }
+
+        section .table_title li,
+        section .table_data li {
+            text-align: center;
+            /* border:1px solid red; */
+        }
+
+        section .table_title li:nth-child(1),
+        section .table_data li:nth-child(1) {
+            width: 15%;
+        }
+
+        section .table_title li:nth-child(2),
+        section .table_data li:nth-child(2) {
+            width: 10%;
+        }
+
+        section .table_title li:nth-child(3),
+        section .table_data li:nth-child(3) {
+            width: 25%;
+        }
+
+        section .table_title li:nth-child(4),
+        section .table_data li:nth-child(4) {
+            width: 25%;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .star {
+            font-size: 20px;
+        }
+
+        .star svg {
+            width: 20px;
+            height: 20px
+        }
+
+        .star svg path {
+            fill-rule: evenodd;
+            stroke: rgb(102, 100, 100);
+            fill: none;
+        }
+
+        .star svg.fill path {
+            color: rgb(255, 187, 68) !important;
+        }
+
+        section .table_title li:nth-child(5),
+        section .table_data li:nth-child(5) {
+            width: 10%;
+        }
+
+        section .table_title li:nth-child(6),
+        section .table_data li:nth-child(6) {
+            width: 15%;
+        }
+
+        section .table_data li:nth-child(6) .fas {
+            margin: 0 4px;
+        }
+
+        /* PAGENATION */
+        section .pagenation {
+            justify-content: center;
+            margin: 50px 0;
+            border-bottom: 0;
+        }
+
+        section .pagenation li a {
+            border: 1px solid #E7EAEC;
+            padding: 8px 13px;
+        }
+
+        section .pagenation li a.on {
+            background-color: #1AB394;
+            color: #fff;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            margin: 0 auto;
+            width: 40%;
+            background-color: #fff;
+            position: fixed;
+            box-shadow: 0px 0px 1px 10000px rgba(0, 0, 0, .5);
+            left: 55%;
+            top: 50px;
+            transform: translate(-50%);
+            padding: 20px 40px;
+            border-radius: 5px;
+            border: 10px solid rgba(26,179,148);
+        }
+
+        .modal.on {
+            display: block;
+        }
+
+        .modal .close_btn {
+            display: block;
+            text-align: right;
+        }
+
+        .modal .close_btn .fas {
+            text-align: right;
+            color: #1AB394;
+            font-size: 25px;
+        }
+
+        .modal h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .modal li {
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        .modal label {
+            display: inline-block;
+            width: 150px;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            box-sizing: border-box;
+            vertical-align: middle;
+        }
+
+        .modal input,
+        .modal select,
+        .modal textarea {
+            display: inline-block;
+            width: 60%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #c8c9ca;
+            border-radius: 5px;
+        }
+
+        .modal .button {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .modal .button input {
+            width: 20%;
+            margin: 0 20px;
+            border: 1px solid #9FAABE;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #E7EAEC;
+        }
+
+        .modal .button input:hover {
+            background-color: #1AB394;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap clear">
+        <header>
+            <h1>
+                <i class="fas fa-home"></i>
+                3분 부동산
+            </h1>
+        </header>
+        <nav>
+            <ul>
+                <li class="login_info">
+                    <a href="">
+                        <i class="fas fa-meh"></i>
+                        <h3>최용호님</h3>
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-building"></i>
+                        <span>현장 LIST</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="customer.html">
+                        <i class="fas fa-address-book"></i>
+                        <span>고객 LIST</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <section>
+            <div class="top">
+                <div class="search_bar">
+                    <input type="search">
+                    <a href=""><i class="fas fa-search"></i></a>
+                </div>
+                <button class="add_btn">add+</button>
+            </div>
+            <ul class="table_title">
+                <li><a href="">이름</a></li>
+                <li><a href="">성별</a></li>
+                <li><a href="">연락처</a></li>
+                <li><a href="">반응도</a></li>
+                <li><a href="">상담내역</a></li>
+                <li><a href="">관리</a></li>
+            </ul>
+            <script>
+                for (let i = 0; i <= 20; i++) {
+                    document.write(
+                        `<ul class="table_data">
+                        <li><a href="">최용호</a></li>
+                        <li><a href="">남</a></li>
+                        <li><a href="">010-0000-0000</a></li>
+                        <li>
+                            <div class="star_wrap">    
+                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
+                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
+                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
+                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
+                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>                            
+                            </div>
+                        </li>
+                        <li><a href="">보기</a></li>
+                        <li>
+                            <a href=""><i class="fas fa-edit"></i></a>
+                            <a href=""><i class="fas fa-trash-alt"></i></a>                     
+                        </li>
+                    </ul>
+                    `)
+                }
+            </script>
+            <ul class="pagenation">
+                <li><a href="" class="prev">prev</a></li>
+                <li><a href="" class="on">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href="" class="prev">next</a></li>
+            </ul>
+        </section>
+        <article class="modal">
+            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
+            <ul class="modal_popup">
+                <h2>고객정보 입력</h2>
+                <li>
+                    <label for="pname">이름</label>
+                    <input type="text" id="pname">
+                </li>
+                <li>
+                    <label for="gender">성별</label>
+                    <select name="" id="gender">
+                        <option value="남자">남자</option>
+                        <option value="여자">여자</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="phone">연락처</label>
+                    <input type="text" id="phone">
+                </li>
+                <li>
+                    <label for="phone">반응도</label>
+                    <span class="star_wrap">
+                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
+                                </path>
+                            </svg></span>
+                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
+                                </path>
+                            </svg></span>
+                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
+                                </path>
+                            </svg></span>
+                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
+                                </path>
+                            </svg></span>
+                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
+                                <path
+                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
+                                </path>
+                            </svg></span>
+                    </span>
+                </li>
+                <li>
+                    <label for="consulting">상담내역</label>
+                    <textarea name="" id="consulting" cols="40" rows="10"></textarea>
+                </li>
+            </ul>
+            <div class="button">
+                <input type="reset">
+                <input type="submit" value="등록">
+            </div>
+        </article>
+    </div>
+    <script>
+        const closeBtn = document.querySelector('.close_btn');
+        const modal = document.querySelector('.modal');
+        const addBtn = document.querySelector('.add_btn');
+        const stars = document.querySelectorAll('.star svg');
+
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].addEventListener('click', clickWork)
+        }
+
+        console.log(stars)
+
+        closeBtn.addEventListener('click', clickWork);
+        addBtn.addEventListener('click', clickWork);
+
+        function clickWork() {
+            modal.classList.remove('on');
+            modal.classList.add('on');
+
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].classList.add('fill')
+            }
+
+        }
+    </script>
+</body>
+
+</html>
