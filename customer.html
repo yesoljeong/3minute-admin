@@ -34,6 +34,7 @@
         header {
             position: relative;
             height: 100px;
+            z-index: 1;
         }
 
         header h1 {
@@ -66,7 +67,7 @@
             background-color: #233645;
             position: fixed;
             top: 100px;
-            width: 18%;
+            width: 15%;
             height: 100vh;
             /* border:1px solid red; */
         }
@@ -121,22 +122,21 @@
             color: #9FAABE;
         }
 
-        /* SECTION */
-        section {
-            padding: 10px 20px;
-            float: right;
-            width: 82%;
-            margin-bottom: 150px;
-        }
-
-        section .top {
+        /* SECTION ASIDE WRAP*/
+        .sec_aside {
             display: flex;
-            justify-content: flex-end;
-            align-items: center;
-            height: 80px;
+            justify-content: space-between;
+            width: 85%;
+            float: right;
         }
 
-        section .top button {
+        .top {
+            text-align: right;
+            height: 60px;
+            vertical-align: middle;
+        }
+
+        .top button {
             width: 80px;
             padding: 10px;
             background-color: #1AB394;
@@ -144,6 +144,26 @@
             border-radius: 5px;
             cursor: pointer;
             color: #fff;
+            vertical-align: middle;
+        }
+
+        /* SECTION */
+        section {
+            padding: 10px 20px;
+            width: 100%;
+            margin-bottom: 150px;
+            /* border: 1px solid red; */
+        }
+
+        section.harf {
+            width: 60%;
+        }
+
+        section .top {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 80px;
         }
 
         section .search_bar {
@@ -196,12 +216,12 @@
         section .table_title li,
         section .table_data li {
             text-align: center;
-            /* border:1px solid red; */
+            /* border: 1px solid red; */
         }
 
         section .table_title li:nth-child(1),
         section .table_data li:nth-child(1) {
-            width: 15%;
+            width: 20%;
         }
 
         section .table_title li:nth-child(2),
@@ -211,14 +231,18 @@
 
         section .table_title li:nth-child(3),
         section .table_data li:nth-child(3) {
-            width: 25%;
+            width: 30%;
         }
 
         section .table_title li:nth-child(4),
-        section .table_data li:nth-child(4) {
-            width: 25%;
-            margin: 0 auto;
-            text-align: center;
+        section .table_data li:nth-child(4),
+        section .table_title li:nth-child(5),
+        section .table_data li:nth-child(5) {
+            width: 20%;
+        }
+
+        section .table_data li:nth-child(4) .fas {
+            margin: 0 4px;
         }
 
         .star {
@@ -240,20 +264,6 @@
             color: rgb(255, 187, 68) !important;
         }
 
-        section .table_title li:nth-child(5),
-        section .table_data li:nth-child(5) {
-            width: 10%;
-        }
-
-        section .table_title li:nth-child(6),
-        section .table_data li:nth-child(6) {
-            width: 15%;
-        }
-
-        section .table_data li:nth-child(6) .fas {
-            margin: 0 4px;
-        }
-
         /* PAGENATION */
         section .pagenation {
             justify-content: center;
@@ -271,6 +281,50 @@
             color: #fff;
         }
 
+        /* aside */
+        aside {
+            width: 40%;
+            padding: 30px 20px;
+            margin-bottom: 150px;
+            display: none;
+            box-sizing: initial;
+        }
+
+        aside.on {
+            display: block;
+        }
+
+        aside ul {
+            border: 1px solid #E7EAEC;
+            margin-bottom: 50px;
+            background-color: #fff;
+        }
+
+        aside li {
+            width: 50%;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            font-family: 'Noto Sans', sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #fff;
+            /* border:1px solid red; */
+        }
+
+        aside li:nth-child(2n) {
+            float: right;
+        }
+
+        aside li:last-child {
+            width: 100%;
+            background-color: #fff;
+            border-top: 1px solid #E7EAEC;
+        }
+
+        aside li span:nth-child(2) {
+            font-weight: 700;
+        }
+
         /* MODAL */
         .modal {
             display: none;
@@ -285,6 +339,7 @@
             padding: 20px 40px;
             border-radius: 5px;
             border: 10px solid rgba(26, 179, 148);
+            z-index: 10;
         }
 
         .modal.on {
@@ -386,31 +441,124 @@
                 </li>
             </ul>
         </nav>
-        <section>
-            <div class="top">
-                <div class="search_bar">
-                    <input type="search">
-                    <a href=""><i class="fas fa-search"></i></a>
+        <div class="sec_aside">
+            <section class="">
+                <div class="top">
+                    <div class="search_bar">
+                        <input type="search">
+                        <a href=""><i class="fas fa-search"></i></a>
+                    </div>
+                    <button class="add_btn">add+</button>
                 </div>
-                <button class="add_btn">add+</button>
-            </div>
-            <ul class="table_title">
-                <li><a href="">이름</a></li>
-                <li><a href="">성별</a></li>
-                <li><a href="">연락처</a></li>
-                <li><a href="">반응도</a></li>
-                <li><a href="">상담내역</a></li>
-                <li><a href="">관리</a></li>
-            </ul>
-            <div id="customers"></div>
-            <ul class="pagenation">
-                <li><a href="" class="prev">prev</a></li>
-                <li><a href="" class="on">1</a></li>
-                <li><a href="">2</a></li>
-                <li><a href="">3</a></li>
-                <li><a href="" class="prev">next</a></li>
-            </ul>
-        </section>
+                <ul class="table_title">
+                    <li><a href="">이름</a></li>
+                    <li><a href="">성별</a></li>
+                    <li><a href="">연락처</a></li>
+                    <li><a href="">관리</a></li>
+                    <li><a href="">상담내역</a></li>
+                </ul>
+                <div id="customers"></div>
+                <ul class="pagenation">
+                    <li><a href="" class="prev">prev</a></li>
+                    <li><a href="" class="on">1</a></li>
+                    <li><a href="">2</a></li>
+                    <li><a href="">3</a></li>
+                    <li><a href="" class="prev">next</a></li>
+                </ul>
+            </section>
+            <aside class="">
+                <div class="top">
+                    <button class="add_btn">add+</button>
+                </div>
+                <ul class="clear">
+                    <li>
+                        <span>상담일자 : </span>
+                        <span>2020년 10월 2일</span>
+                    </li>
+                    <li>
+                        <span>상담사 : </span>
+                        <span>최용호</span>
+                    </li>
+                    <li>
+                        <span>매물번호 : </span>
+                        <span>200</span>
+                    </li>
+                    <li>
+                        <span>관심도 : </span>
+                        <span>★★★★★</span>
+                    </li>
+                    <li>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                    </li>
+                </ul>
+                <ul class="clear">
+                    <li>
+                        <span>상담일자 : </span>
+                        <span>2020년 8월 2일</span>
+                    </li>
+                    <li>
+                        <span>상담사 : </span>
+                        <span>최우철</span>
+                    </li>
+                    <li>
+                        <span>매물번호 : </span>
+                        <span>400</span>
+                    </li>
+                    <li>
+                        <span>관심도 : </span>
+                        <span>★★★★★</span>
+                    </li>
+                    <li>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                    </li>
+                </ul>
+                <ul class="clear">
+                    <li>
+                        <span>상담일자 : </span>
+                        <span>2020년 8월 2일</span>
+                    </li>
+                    <li>
+                        <span>상담사 : </span>
+                        <span>최우철</span>
+                    </li>
+                    <li>
+                        <span>매물번호 : </span>
+                        <span>400</span>
+                    </li>
+                    <li>
+                        <span>관심도 : </span>
+                        <span>★★★★★</span>
+                    </li>
+                    <li>
+                        <p>
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                            galley of type and scrambled it to make a type specimen book. It has survived not only five
+                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
+                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
+                            passages, and more recently with desktop publishing software like Aldus PageMaker including
+                            versions of Lorem Ipsum.
+                        </p>
+                    </li>
+                </ul>
+            </aside>
+        </div>
         <article class="modal">
             <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
             <ul class="modal_popup">
@@ -428,41 +576,7 @@
                 </li>
                 <li>
                     <label for="phone">연락처</label>
-                    <input type="text" id="phone">
-                </li>
-                <li>
-                    <label for="phone">반응도</label>
-                    <span class="star_wrap">
-                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
-                                <path
-                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
-                                </path>
-                            </svg></span>
-                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
-                                <path
-                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
-                                </path>
-                            </svg></span>
-                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
-                                <path
-                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
-                                </path>
-                            </svg></span>
-                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
-                                <path
-                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
-                                </path>
-                            </svg></span>
-                        <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24">
-                                <path
-                                    d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z">
-                                </path>
-                            </svg></span>
-                    </span>
-                </li>
-                <li>
-                    <label for="consulting">상담내역</label>
-                    <textarea name="" id="consulting" cols="40" rows="10"></textarea>
+                    <input type="number" id="phone">
                 </li>
             </ul>
             <div class="button">
@@ -472,32 +586,6 @@
         </article>
     </div>
     <script>
-        const closeBtn = document.querySelector('.close_btn');
-        const modal = document.querySelector('.modal');
-        const addBtn = document.querySelector('.add_btn');
-        const stars = document.querySelectorAll('.star svg');
-
-        const newUl = document.createElement('ul');
-
-
-        for (let i = 0; i < stars.length; i++) {
-            stars[i].addEventListener('click', clickWork)
-        }
-
-        closeBtn.addEventListener('click', clickWork);
-        addBtn.addEventListener('click', clickWork);
-
-        function clickWork() {
-            modal.classList.remove('on');
-            modal.classList.add('on');
-
-            for (let i = 0; i < stars.length; i++) {
-                stars[i].classList.add('fill')
-            }
-        }
-
-        customers();
-
         // ajax
         function customers() {
             $.ajax({
@@ -507,43 +595,114 @@
                 success: function (response) {
                     console.log(response)
                     const customer = document.querySelector('#customers');
+
+                    if (!response.data) { //null이든 undefind든 메시지가 나오게 함
+                        alert('데이터가 없습니다');
+                        return;
+                    }
                     for (let i = 0; i < response.data.length; i++) {
                         customer.innerHTML +=
-                    `<ul class="table_data">
-                        <li><a href="">${response.data[i].name}</a></li>
-                        <li><a href="">${response.data[i].gender}</a></li>
-                        <li><a href="">${response.data[i].phone}</a></li>
-                        <li>
-                            <div class="star_wrap">    
-                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
-                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
-                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
-                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>
-                                <span class="star" data-index="3" data-forhalf="3"><svg viewBox="0 0 24 24"><path d="M11.535 18.245l-4.207 2.211c-.489.257-1.094.07-1.35-.42-.103-.194-.138-.417-.101-.634l.803-4.684c.056-.325-.052-.656-.287-.885l-3.404-3.318c-.395-.385-.403-1.018-.018-1.414.154-.157.355-.26.573-.292l4.703-.683c.326-.047.607-.252.753-.547l2.103-4.262c.245-.495.844-.699 1.34-.454.197.097.356.257.454.454L15 7.579c.146.295.427.5.753.547l4.703.683c.547.08.926.587.846 1.134-.031.217-.134.419-.291.572l-3.404 3.318c-.235.23-.343.56-.287.885l.803 4.684c.093.544-.272 1.061-.816 1.155-.217.037-.44.002-.635-.1l-4.207-2.212c-.291-.154-.639-.154-.93 0z"></path></svg></span>                            
-                            </div>
-                        </li>
-                        <li><a href="">보기</a></li>
-                        <li>
-                            <a href=""><i class="fas fa-edit"></i></a>
-                            <a href=""><i class="fas fa-trash-alt"></i></a>                     
-                        </li>
-                    </ul>`
+                            `<ul class="table_data">
+                            <li><a href="">${response.data[i].name}</a></li>
+                            <li><a href="">${response.data[i].gender}</a></li>
+                            <li><a href="">${response.data[i].phone}</a></li>
+                            <li>
+                                <a href=""><i class="fas fa-edit"></i></a>
+                                <a href=""><i class="fas fa-trash-alt"></i></a>                     
+                            </li>
+                            <li class="show"><a href="">보기</a></li>
+                        </ul>`
                     }
-
-                    //     const newLi = document.createElement('li');
-                    //     newLi.textContent = response.data[0].name
-                    //     customer.appendChild(newUl).appendChild(newLi);
-
-
-                    console.log(customer)
 
                     if (response['result'] === 'success') {
                         let msg = response['msg'];
                         alert(msg);
+                        locastion.reload();
+                    }
+
+                    const show = document.querySelectorAll('.show');
+                    console.log(show)
+
+                    for (let i = 0; i < show.length; i++) {
+                        show[i].addEventListener('click', showAside);
+                    }
+
+                    function showAside(e) {
+                        e.preventDefault()
+                        console.log(e.target)
+
+                        if (aside.classList.contains('on') && section.classList.contains('harf')) {
+                            aside.classList.remove('on');
+                            section.classList.remove('harf');
+                        } else {
+                            aside.classList.add('on');
+                            section.classList.add('harf');
+                        }
+                    }
+                }
+            });
+        }
+
+        const closeBtn = document.querySelector('.close_btn');
+        const modal = document.querySelector('.modal');
+        const addBtn = document.querySelector('.add_btn');
+        const stars = document.querySelectorAll('.star svg');
+        const section = document.querySelector('section');
+        const aside = document.querySelector('aside');
+
+
+        for (let i = 0; i < stars.length; i++) {
+            stars[i].addEventListener('click', clickWork)
+        }
+
+        closeBtn.addEventListener('click', addUserModalClose);
+        addBtn.addEventListener('click', addUserModal);
+
+        function addUserModal() {
+            modal.classList.add('on');
+        }
+
+        function addUserModalClose() {
+            modal.classList.remove('on');
+        }
+
+        function clickWork() {
+            for (let i = 0; i < stars.length; i++) {
+                stars[i].classList.add('fill')
+            }
+        }
+
+        customers();
+        const submit = document.querySelector('input[type=submit]')
+
+        submit.addEventListener('click', addUser)
+
+        function addUser() {
+            const pname = document.querySelector('#pname');
+            const gender = document.querySelector('#gender');
+            const phone = document.querySelector('#phone');
+            console.log(pname.value)
+            console.log(gender.value)
+            console.log(phone.value)
+            $.ajax({
+                type: 'POST',
+                url: 'http://3min.yonghochoi.com/api/users',
+                data: {
+                    name: pname.value,
+                    gender: gender.value,
+                    phone: phone.value,
+                },
+                success: function (response) {
+                    if (response['result'] === '200') {
+                        alert('저장하였습니다');
                         location.reload();
                     }
                 }
             });
+
+            alert('등록했습니다');
+            modal.classList.remove('on');
+            location.reload();
         }
     </script>
 </body>

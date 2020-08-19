@@ -8,6 +8,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
         rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>3분 부동산 admin</title>
     <style>
         * {
@@ -32,25 +33,25 @@
         /* HEADER */
         header {
             position: relative;
-            height:100px;
+            height: 100px;
         }
 
         header h1 {
             position: fixed;
-            top:0;
-            left:0;
-            right:0;
+            top: 0;
+            left: 0;
+            right: 0;
             padding: 20px;
             text-align: center;
             font-family: 'Noto Sans', sans-serif;
             font-family: 'Noto Sans KR', sans-serif;
-            color:#fff;
-            background-color:#1AB394;
-            height:100px;
+            color: #fff;
+            background-color: #1AB394;
+            height: 100px;
         }
 
-        header .fas{
-            color:#fff;
+        header .fas {
+            color: #fff;
         }
 
         /* NAV */
@@ -64,28 +65,28 @@
             float: left;
             background-color: #233645;
             position: fixed;
-            top:100px;
+            top: 100px;
             width: 18%;
-            height:100vh;
+            height: 100vh;
             /* border:1px solid red; */
-        }
-     
-        nav .login_info{
-            /* border:1px solid red; */
-            text-align: center;
-            padding:50px 0;
-            background-color:#233645;
         }
 
-        nav .login_info .fas{
-            border:1px solid red;
-            font-size:50px;
+        nav .login_info {
+            /* border:1px solid red; */
+            text-align: center;
+            padding: 50px 0;
+            background-color: #233645;
+        }
+
+        nav .login_info .fas {
+            border: 1px solid red;
+            font-size: 50px;
             margin-bottom: 10px;
         }
 
-        nav .login_info h3{
-            border:1px solid red;
-            color:#fff;
+        nav .login_info h3 {
+            border: 1px solid red;
+            color: #fff;
         }
 
         nav ul li {
@@ -375,24 +376,7 @@
                 <li><a href="">상품유형</a></li>
                 <li><a href="">관리</a></li>
             </ul>
-            <script>
-                for (let i = 0; i <= 20; i++) {
-                    document.write(
-                        `<ul class="table_data">
-                        <li><a href="">1</a></li>
-                        <li><a href="">화성 서희 스타힐스</a></li>
-                        <li><a href="">최우철</a></li>
-                        <li><a href="">010-0000-0000</a></li>
-                        <li><a href="">1억</a></li>
-                        <li><a href="">빌라</a></li>
-                        <li>
-                            <a href=""><i class="fas fa-edit"></i></a>
-                            <a href=""><i class="fas fa-trash-alt"></i></a>                     
-                        </li>
-                    </ul>
-                    `)
-                }
-            </script>
+            <div id="places"></div>
             <ul class="pagenation">
                 <li><a href="" class="prev">prev</a></li>
                 <li><a href="" class="on">1</a></li>
@@ -444,13 +428,49 @@
         const closeBtn = document.querySelector('.close_btn');
         const modal = document.querySelector('.modal');
         const addBtn = document.querySelector('.add_btn');
-        
+
         closeBtn.addEventListener('click', clickWork);
         addBtn.addEventListener('click', clickWork);
 
         function clickWork() {
             modal.classList.remove('on');
             modal.classList.add('on')
+        }
+
+        places();
+
+        // ajax
+        function places() {
+            $.ajax({
+                type: 'GET',
+                url: 'http://3min.yonghochoi.com/api/places?size=10',
+                data: {},
+                success: function (response) {
+                    console.log(response)
+                    const place = document.querySelector('#places');
+                    for (let i = 0; i < response.data.length; i++) {
+                        place.innerHTML +=
+                        `<ul class="table_data">
+                            <li><a href="">${response.data[i].place_type}</a></li>
+                            <li><a href="">${response.data[i].name}</a></li>
+                            <li><a href="">${response.data[i].assignee}</a></li>
+                            <li><a href="">${response.data[i].place_type}</a></li>
+                            <li><a href="">${response.data[i].rt}</a></li>
+                            <li><a href="">${response.data[i].place_type}</a></li>
+                            <li>
+                                <a href=""><i class="fas fa-edit"></i></a>
+                                <a href=""><i class="fas fa-trash-alt"></i></a>                     
+                            </li>
+                        </ul>`
+                    }
+
+                    if (response['result'] === 'success') {
+                        let msg = response['msg'];
+                        alert(msg);
+                        location.reload();
+                    }
+                }
+            });
         }
     </script>
 </body>
