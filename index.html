@@ -66,7 +66,7 @@
             background-color: #233645;
             position: fixed;
             top: 100px;
-            width: 18%;
+            width: 15%;
             height: 100vh;
             /* border:1px solid red; */
         }
@@ -79,13 +79,13 @@
         }
 
         nav .login_info .fas {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             font-size: 50px;
             margin-bottom: 10px;
         }
 
         nav .login_info h3 {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             color: #fff;
         }
 
@@ -125,7 +125,7 @@
         section {
             padding: 10px 20px;
             float: right;
-            width: 82%;
+            width: 85%;
             margin-bottom: 150px;
         }
 
@@ -181,6 +181,12 @@
             font-family: 'Noto Sans', sans-serif;
             font-family: 'Noto Sans KR', sans-serif;
             padding: 15px 0;
+            /* border: 1px solid red; */
+        }
+
+        section #places{
+            display: flex;
+            flex-flow: column-reverse;
         }
 
         section .table_data li .fas {
@@ -199,35 +205,32 @@
 
         section .table_title li:nth-child(1),
         section .table_data li:nth-child(1) {
-            width: 8%;
+            display: none;
         }
 
         section .table_title li:nth-child(2),
-        section .table_data li:nth-child(2) {
-            width: 30%;
-        }
-
-        section .table_title li:nth-child(3),
-        section .table_data li:nth-child(3),
-        section .table_title li:nth-child(5),
-        section .table_data li:nth-child(5),
+        section .table_data li:nth-child(2),
         section .table_title li:nth-child(7),
-        section .table_data li:nth-child(7) {
+        section .table_data li:nth-child(7),
+        section .table_title li:nth-child(8),
+        section .table_data li:nth-child(8),
+        section .table_title li:nth-child(9),
+        section .table_data li:nth-child(9) {
             width: 10%;
         }
 
         section .table_title li:nth-child(4),
-        section .table_data li:nth-child(4) {
+        section .table_data li:nth-child(4),
+        section .table_title li:nth-child(5),
+        section .table_data li:nth-child(5),
+        section .table_title li:nth-child(6),
+        section .table_data li:nth-child(6) {
             width: 20%;
         }
 
-        section .table_title li:nth-child(6),
-        section .table_data li:nth-child(6) {
-            width: 12%;
-        }
-
-        section .table_data li:nth-child(7) .fas {
-            margin: 0 4px;
+        section .table_title li:nth-child(3),
+        section .table_data li:nth-child(3) {
+            width: 40%;
         }
 
         /* PAGENATION */
@@ -251,7 +254,7 @@
         .modal {
             display: none;
             margin: 0 auto;
-            width: 40%;
+            width: 500px;
             background-color: #fff;
             position: fixed;
             box-shadow: 0px 0px 1px 10000px rgba(0, 0, 0, .5);
@@ -368,13 +371,15 @@
                 <button class="add_btn">add+</button>
             </div>
             <ul class="table_title">
+                <li class="none">아이디</li>
                 <li><a href="">매물번호</a></li>
                 <li><a href="">현장명</a></li>
                 <li><a href="">담당자</a></li>
                 <li><a href="">연락처</a></li>
                 <li><a href="">R/T</a></li>
                 <li><a href="">상품유형</a></li>
-                <li><a href="">관리</a></li>
+                <li><a href="">수정</a></li>
+                <li><a href="">삭제</a></li>
             </ul>
             <div id="places"></div>
             <ul class="pagenation">
@@ -385,7 +390,7 @@
                 <li><a href="" class="prev">next</a></li>
             </ul>
         </section>
-        <article class="modal">
+        <article class="modal add_place">
             <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
             <ul class="modal_popup">
                 <h2>현장정보 입력</h2>
@@ -423,21 +428,68 @@
                 <input type="submit" value="등록">
             </div>
         </article>
+        <article class="modal modified_modal">
+            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
+            <ul class="modal_popup">
+                <h2>등록정보 수정</h2>
+                <li class="none">
+                    <label for="pid">고유아이디</label>
+                    <input type="text" id="pid">
+                </li>
+                <li>
+                    <label for="number">매물번호</label>
+                    <input type="number" id="number">
+                </li>
+                <li>
+                    <label for="place">현장명</label>
+                    <input type="text" id="place">
+
+                </li>
+                <li>
+                    <label for="pname">담당자</label>
+                    <input type="text" id="pname">
+
+                </li>
+                <li>
+                    <label for="phone">연락처</label>
+                    <input type="number" id="phone">
+
+                </li>
+                <li>
+                    <label for="cost">R/T</label>
+                    <input type="text" id="cost">
+
+                </li>
+                <li>
+                    <label for="kinds">상품유형</label>
+                    <input type="text" id="kinds">
+                </li>
+            </ul>
+            <div class="button">
+                <input type="reset">
+                <input type="submit" value="수정">
+            </div>
+        </article>
     </div>
     <script>
-        const closeBtn = document.querySelector('.close_btn');
-        const modal = document.querySelector('.modal');
-        const addBtn = document.querySelector('.add_btn');
-
-        closeBtn.addEventListener('click', clickWork);
-        addBtn.addEventListener('click', clickWork);
-
-        function clickWork() {
-            modal.classList.remove('on');
-            modal.classList.add('on')
-        }
-
+        modal();
         places();
+
+        // 모달팝업 open close
+
+        function modal() {
+            const modalPopup = document.querySelector('.add_place');
+            const addBtn = document.querySelector('.add_btn');
+            const closeBtn = document.querySelector('.close_btn');
+
+            closeBtn.addEventListener('click', addModal);
+            addBtn.addEventListener('click', addModal);
+
+            function addModal() {
+                modalPopup.classList.remove('on');
+                modalPopup.classList.add('on')
+            }
+        };
 
         // ajax
         function places() {
@@ -446,28 +498,154 @@
                 url: 'http://3min.yonghochoi.com/api/places?size=10',
                 data: {},
                 success: function (response) {
-                    console.log(response)
                     const place = document.querySelector('#places');
+
+                    if (!response.data) { //null이든 undefind든 메시지가 나오게 함
+                        alert('데이터가 없습니다.')
+                        return;
+                    }
+
                     for (let i = 0; i < response.data.length; i++) {
                         place.innerHTML +=
                         `<ul class="table_data">
+                            <li>${response.data[i].id}</li>
                             <li><a href="">${response.data[i].place_type}</a></li>
                             <li><a href="">${response.data[i].name}</a></li>
                             <li><a href="">${response.data[i].assignee}</a></li>
                             <li><a href="">${response.data[i].place_type}</a></li>
                             <li><a href="">${response.data[i].rt}</a></li>
                             <li><a href="">${response.data[i].place_type}</a></li>
-                            <li>
-                                <a href=""><i class="fas fa-edit"></i></a>
-                                <a href=""><i class="fas fa-trash-alt"></i></a>                     
-                            </li>
+                            <li><i class="fas fa-edit"></i></li>
+                            <li><i class="fas fa-trash-alt"></i></li>
                         </ul>`
                     }
 
-                    if (response['result'] === 'success') {
-                        let msg = response['msg'];
-                        alert(msg);
+                    const modifiedBtn = document.querySelectorAll('.fa-edit');
+
+                    for (let i = 0; i < modifiedBtn.length; i++) {
+                        modifiedBtn[i].addEventListener('click', clickModified);
+                    }
+
+                    const modifiedModal = document.querySelector('.modified_modal')
+
+                    function clickModified() {
+
+                        modifiedModal.classList.add('on');
+
+                        const pid = this.parentNode.parentNode.children[0].textContent
+                        const pnumber = this.parentNode.parentNode.children[1].textContent
+                        const placeName = this.parentNode.parentNode.children[2].textContent
+                        const assignee = this.parentNode.parentNode.children[3].textContent
+                        const phone = this.parentNode.parentNode.children[4].textContent
+                        const rt = this.parentNode.parentNode.children[5].textContent
+                        const placeType = this.parentNode.parentNode.children[6].textContent
+
+                        modifiedModal.querySelector('#pid').value = pid;
+                        modifiedModal.querySelector('#number').value = pnumber;
+                        modifiedModal.querySelector('#place').value = placeName;
+                        modifiedModal.querySelector('#pname').value = assignee;
+                        modifiedModal.querySelector('#phone').value = phone;
+                        modifiedModal.querySelector('#cost').value = rt;
+                        modifiedModal.querySelector('#kinds').value = placeType;
+                    }
+
+                    // 모달창에서 수정 submit눌렀을때 수정되는 ajax
+                    const modifiedsubmit = document.querySelector('.modified_modal input[type=submit]')
+                    modifiedsubmit.addEventListener('click', modified)
+
+                    function modified() {
+
+                        const pid = modifiedModal.querySelector('#pid').value
+                        const pnumber = modifiedModal.querySelector('#number').value
+                        const placeName = modifiedModal.querySelector('#place').value
+                        const assignee = modifiedModal.querySelector('#pname').value
+                        const phone = modifiedModal.querySelector('#phone').value
+                        const rt = modifiedModal.querySelector('#cost').value
+                        const placeType = modifiedModal.querySelector('#kinds').value
+
+                        $.ajax({
+                            type: 'PUT',
+                            url: `http://3min.yonghochoi.com/api/places/${pid}`,
+                            data: {
+                                name: placeName,
+                                assignee: assignee,
+                                rt: rt,
+                                place_type: placeType,
+                            },
+                            success: function (response) {
+                                console.log(response)
+                                if (response['code'] === '200') {
+                                    alert('수정 하였습니다');
+                                    location.reload();
+                                } else {
+                                    alert('수정에 실패했습니다');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+
+                    // 데이터 삭제 ajax
+                    const delBtn = document.querySelectorAll('.fa-trash-alt')
+
+                    for (let i = 0; i < delBtn.length; i++) {
+                        delBtn[i].addEventListener('click', deleteBtnWork)
+                    }
+
+                    function deleteBtnWork(e) {
+                        const pid = e.target.parentNode.parentNode.firstElementChild.textContent
+                        console.log(pid)
+
+                        $.ajax({
+                            type: 'DELETE',
+                            url: `http://3min.yonghochoi.com/api/places/${pid}`,
+                            data: {},
+                            success: function (response) {
+                                console.log(response)
+                                if (response['code'] === '200') {
+                                    alert('삭제 하였습니다');
+                                    location.reload();
+                                } else {
+                                    alert('삭제에 실패했습니다');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+                }
+            })
+        };
+
+        // 데이터 서버에 전달 ajax
+        const addsubmit = document.querySelector('.add_place input[type=submit]')
+
+        addsubmit.addEventListener('click', addPlace)
+
+        function addPlace() {
+            const number = document.querySelector('#number');
+            const place = document.querySelector('#place');
+            const pname = document.querySelector('#pname');
+            const phone = document.querySelector('#phone');
+            const cost = document.querySelector('#cost');
+            const kinds = document.querySelector('#kinds');
+
+            $.ajax({
+                type: 'POST',
+                url: 'http://3min.yonghochoi.com/api/places',
+                data: {
+                    place_type: number.value,
+                    name: place.value,
+                    assignee: pname.value,
+                    phone: phone.value,
+                    rt: cost.value,
+                    place_type: kinds.value,
+                },
+                success: function (response) {
+                    if (response['code'] === '200') {
+                        alert('저장하였습니다');
                         location.reload();
+                    } else {
+                        alert('저장에 실패했습니다');
                     }
                 }
             });

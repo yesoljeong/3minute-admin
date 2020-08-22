@@ -80,13 +80,13 @@
         }
 
         nav .login_info .fas {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             font-size: 50px;
             margin-bottom: 10px;
         }
 
         nav .login_info h3 {
-            border: 1px solid red;
+            /* border: 1px solid red; */
             color: #fff;
         }
 
@@ -185,6 +185,11 @@
             vertical-align: middle;
         }
 
+        #customers {
+            display: flex;
+            flex-flow: column-reverse;
+        }
+
         section ul {
             display: flex;
             justify-content: space-around;
@@ -202,26 +207,26 @@
             font-family: 'Noto Sans', sans-serif;
             font-family: 'Noto Sans KR', sans-serif;
             padding: 10px 0;
+            /* border: 1px solid red; */
         }
 
         section .table_data li .fas {
             font-size: 18px;
         }
 
+        section .table_title li:nth-child(1),
+        section .table_data li:nth-child(1) {
+            display: none;
+        }
+
         section .table_data li .fas:hover {
             color: #1AB394;
-
         }
 
         section .table_title li,
         section .table_data li {
             text-align: center;
             /* border: 1px solid red; */
-        }
-
-        section .table_title li:nth-child(1),
-        section .table_data li:nth-child(1) {
-            width: 20%;
         }
 
         section .table_title li:nth-child(2),
@@ -231,18 +236,26 @@
 
         section .table_title li:nth-child(3),
         section .table_data li:nth-child(3) {
-            width: 30%;
-        }
-
-        section .table_title li:nth-child(4),
-        section .table_data li:nth-child(4),
-        section .table_title li:nth-child(5),
-        section .table_data li:nth-child(5) {
             width: 20%;
         }
 
-        section .table_data li:nth-child(4) .fas {
-            margin: 0 4px;
+        section .table_title li:nth-child(4),
+        section .table_data li:nth-child(4) {
+            width: 10%;
+        }
+
+        section .table_title li:nth-child(5),
+        section .table_data li:nth-child(5) {
+            width: 30%;
+        }
+
+        section .table_title li:nth-child(6),
+        section .table_data li:nth-child(6),
+        section .table_title li:nth-child(7),
+        section .table_data li:nth-child(7),
+        section .table_title li:nth-child(8),
+        section .table_data li:nth-child(8) {
+            width: 10%;
         }
 
         .star {
@@ -329,7 +342,7 @@
         .modal {
             display: none;
             margin: 0 auto;
-            width: 40%;
+            width: 500px;
             background-color: #fff;
             position: fixed;
             box-shadow: 0px 0px 1px 10000px rgba(0, 0, 0, .5);
@@ -408,6 +421,11 @@
             background-color: #1AB394;
             color: #fff;
         }
+
+        .modified_modal .none {
+            border: 1px solid red;
+            display: none;
+        }
     </style>
 </head>
 
@@ -451,10 +469,13 @@
                     <button class="add_btn">add+</button>
                 </div>
                 <ul class="table_title">
+                    <li><a href="">아이디</a></li>
+                    <li><a href="">번호</a></li>
                     <li><a href="">이름</a></li>
                     <li><a href="">성별</a></li>
                     <li><a href="">연락처</a></li>
-                    <li><a href="">관리</a></li>
+                    <li><a href="">수정</a></li>
+                    <li><a href="">삭제</a></li>
                     <li><a href="">상담내역</a></li>
                 </ul>
                 <div id="customers"></div>
@@ -559,7 +580,7 @@
                 </ul>
             </aside>
         </div>
-        <article class="modal">
+        <article class="add_modal modal">
             <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
             <ul class="modal_popup">
                 <h2>고객정보 입력</h2>
@@ -584,10 +605,66 @@
                 <input type="submit" value="등록">
             </div>
         </article>
+        <article class="modified_modal modal">
+            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
+            <ul class="modal_popup">
+                <h2>고객정보 입력</h2>
+                <li class="none">
+                    <label for="pid">아이디</label>
+                    <input type="text" id="pid">
+                </li>
+                <li>
+                    <label for="pname">이름</label>
+                    <input type="text" id="pname">
+                </li>
+                <li>
+                    <label for="gender">성별</label>
+                    <select name="" id="gender">
+                        <option value="남자">남자</option>
+                        <option value="여자">여자</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="phone">연락처</label>
+                    <input type="number" id="phone">
+                </li>
+            </ul>
+            <div class="button">
+                <input type="reset">
+                <input type="submit" value="수정">
+            </div>
+        </article>
     </div>
     <script>
-        // ajax
+        const section = document.querySelector('section');
+        const aside = document.querySelector('aside');
+        const stars = document.querySelectorAll('.star svg');
+        const addModal = document.querySelector('.add_modal');
+
+        customers();
+        modal();
+
+        // 모달팝업 open close
+        function modal() {
+
+            const closeBtn = document.querySelector('.close_btn');
+            const addBtn = document.querySelector('.add_btn');
+
+            addBtn.addEventListener('click', addUserModal);
+            closeBtn.addEventListener('click', addUserModalClose);
+
+            function addUserModal() {
+                addModal.classList.add('on');
+            }
+
+            function addUserModalClose() {
+                addModal.classList.remove('on');
+            }
+        };
+
+        // ajax 리스트
         function customers() {
+
             $.ajax({
                 type: 'GET',
                 url: 'http://3min.yonghochoi.com/api/users?size=10',
@@ -602,26 +679,20 @@
                     }
                     for (let i = 0; i < response.data.length; i++) {
                         customer.innerHTML +=
-                            `<ul class="table_data">
-                            <li><a href="">${response.data[i].name}</a></li>
-                            <li><a href="">${response.data[i].gender}</a></li>
-                            <li><a href="">${response.data[i].phone}</a></li>
-                            <li>
-                                <a href=""><i class="fas fa-edit"></i></a>
-                                <a href=""><i class="fas fa-trash-alt"></i></a>                     
-                            </li>
+                        `<ul class="table_data" id="${response.data[i].id}">
+                            <li class="pid">${response.data[i].id}</li>
+                            <li>${[i+1]}</li>
+                            <li>${response.data[i].name}</li>
+                            <li>${response.data[i].gender}</li>
+                            <li>${response.data[i].phone}</li>
+                            <li><i class="fas fa-edit modified"></i></li>
+                            <li><i class="fas fa-trash-alt"></i></li>
                             <li class="show"><a href="">보기</a></li>
                         </ul>`
                     }
 
-                    if (response['result'] === 'success') {
-                        let msg = response['msg'];
-                        alert(msg);
-                        locastion.reload();
-                    }
-
+                    // 상담내역 '보기' 버튼 클릭 시
                     const show = document.querySelectorAll('.show');
-                    console.log(show)
 
                     for (let i = 0; i < show.length; i++) {
                         show[i].addEventListener('click', showAside);
@@ -639,31 +710,95 @@
                             section.classList.add('harf');
                         }
                     }
+
+                    // 데이터 수정 ajax
+                    const modifiedBtns = document.querySelectorAll('.modified');
+                    const modifiedModal = document.querySelector('.modified_modal');
+                    const modifiedModalBtn = document.querySelector('.modified_modal input[type=submit]');
+
+                    for (let i = 0; i < modifiedBtns.length; i++) {
+                        modifiedBtns[i].addEventListener('click', showModal);
+                    }
+
+                    modifiedModalBtn.addEventListener('click', modified)
+
+                    function showModal() {
+                        modifiedModal.classList.add('on');
+
+                        const pid = this.parentNode.parentNode.children[0].textContent
+                        const pname = this.parentNode.parentNode.children[2].textContent
+                        const gender = this.parentNode.parentNode.children[3].textContent
+                        const phone = this.parentNode.parentNode.children[4].textContent
+
+                        modifiedModal.querySelector('#pid').value = pid
+                        modifiedModal.querySelector('#pname').value = pname
+                        modifiedModal.querySelector('#gender').value = gender
+                        modifiedModal.querySelector('#phone').value = phone
+                    }
+
+                    function modified() {
+
+                        const pid = modifiedModal.querySelector('#pid').value
+                        const pname = modifiedModal.querySelector('#pname').value
+                        const gender = modifiedModal.querySelector('#gender').value
+                        const phone = modifiedModal.querySelector('#phone').value
+
+                        console.log(pid)
+
+                        $.ajax({
+                            type: 'PUT',
+                            url: `http://3min.yonghochoi.com/api/users/${pid}`,
+                            data: {
+                                name: pname,
+                                gender: gender,
+                                phone: phone,
+                            },
+                            success: function (response) {
+                                console.log(response)
+                                if (response['code'] === '200') {
+                                    alert('수정 하였습니다');
+                                    location.reload();
+                                } else {
+                                    alert('수정에 실패했습니다');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
+
+                    const delBtn = document.querySelectorAll('.fa-trash-alt')
+                    console.log(delBtn)
+
+                    for (let i = 0; i < delBtn.length; i++) {
+                        delBtn[i].addEventListener('click', deleteWork);
+                    }
+
+                    function deleteWork(e) {
+                        const pid = e.target.parentNode.parentNode.id
+                        console.log(pid)
+                   
+                        $.ajax({
+                            type: 'DELETE',
+                            url: `http://3min.yonghochoi.com/api/users/${pid}`,
+                            data: {},
+                            success: function (response) {
+                                console.log(response)
+                                if (response['code'] === '200') {
+                                    alert('삭제되었습니다');
+                                    location.reload();
+                                } else {
+                                    alert('삭제에 실패했습니다');
+                                    location.reload();
+                                }
+                            }
+                        });
+                    }
                 }
             });
         }
 
-        const closeBtn = document.querySelector('.close_btn');
-        const modal = document.querySelector('.modal');
-        const addBtn = document.querySelector('.add_btn');
-        const stars = document.querySelectorAll('.star svg');
-        const section = document.querySelector('section');
-        const aside = document.querySelector('aside');
-
-
         for (let i = 0; i < stars.length; i++) {
             stars[i].addEventListener('click', clickWork)
-        }
-
-        closeBtn.addEventListener('click', addUserModalClose);
-        addBtn.addEventListener('click', addUserModal);
-
-        function addUserModal() {
-            modal.classList.add('on');
-        }
-
-        function addUserModalClose() {
-            modal.classList.remove('on');
         }
 
         function clickWork() {
@@ -672,18 +807,15 @@
             }
         }
 
-        customers();
+        // 데이터 서버에 전달 ajax
         const submit = document.querySelector('input[type=submit]')
-
         submit.addEventListener('click', addUser)
 
         function addUser() {
             const pname = document.querySelector('#pname');
             const gender = document.querySelector('#gender');
             const phone = document.querySelector('#phone');
-            console.log(pname.value)
-            console.log(gender.value)
-            console.log(phone.value)
+
             $.ajax({
                 type: 'POST',
                 url: 'http://3min.yonghochoi.com/api/users',
@@ -693,16 +825,15 @@
                     phone: phone.value,
                 },
                 success: function (response) {
-                    if (response['result'] === '200') {
-                        alert('저장하였습니다');
+                    if (response['code'] === '200') {
+                        alert('등록 했습니다');
+                        location.reload();
+                    } else {
+                        alert('등록에 실패했습니다');
                         location.reload();
                     }
                 }
             });
-
-            alert('등록했습니다');
-            modal.classList.remove('on');
-            location.reload();
         }
     </script>
 </body>
