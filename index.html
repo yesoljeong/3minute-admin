@@ -184,7 +184,7 @@
             /* border: 1px solid red; */
         }
 
-        section #places{
+        section #places {
             display: flex;
             flex-flow: column-reverse;
         }
@@ -395,32 +395,32 @@
             <ul class="modal_popup">
                 <h2>현장정보 입력</h2>
                 <li>
-                    <label for="number">매물번호</label>
-                    <input type="number" id="number">
+                    <label for="add_number">매물번호</label>
+                    <input type="text" id="add_number">
                 </li>
                 <li>
-                    <label for="place">현장명</label>
-                    <input type="text" id="place">
+                    <label for="add_place">현장명</label>
+                    <input type="text" id="add_place">
 
                 </li>
                 <li>
-                    <label for="pname">담당자</label>
-                    <input type="text" id="pname">
+                    <label for="add_pname">담당자</label>
+                    <input type="text" id="add_pname">
 
                 </li>
                 <li>
-                    <label for="phone">연락처</label>
-                    <input type="number" id="phone">
+                    <label for="add_phone">연락처</label>
+                    <input type="text" id="add_phone">
 
                 </li>
                 <li>
-                    <label for="cost">R/T</label>
-                    <input type="text" id="cost">
+                    <label for="add_cost">R/T</label>
+                    <input type="text" id="add_cost">
 
                 </li>
                 <li>
-                    <label for="kinds">상품유형</label>
-                    <input type="text" id="kinds">
+                    <label for="add_kinds">상품유형</label>
+                    <input type="text" id="add_kinds">
                 </li>
             </ul>
             <div class="button">
@@ -433,36 +433,36 @@
             <ul class="modal_popup">
                 <h2>등록정보 수정</h2>
                 <li class="none">
-                    <label for="pid">고유아이디</label>
-                    <input type="text" id="pid">
+                    <label for="modi_pid">고유아이디</label>
+                    <input type="text" id="modi_pid">
                 </li>
                 <li>
-                    <label for="number">매물번호</label>
-                    <input type="number" id="number">
+                    <label for="modi_number">매물번호</label>
+                    <input type="text" id="modi_number">
                 </li>
                 <li>
-                    <label for="place">현장명</label>
-                    <input type="text" id="place">
+                    <label for="modi_place">현장명</label>
+                    <input type="text" id="modi_place">
 
                 </li>
                 <li>
-                    <label for="pname">담당자</label>
-                    <input type="text" id="pname">
+                    <label for="modi_pname">담당자</label>
+                    <input type="text" id="modi_pname">
 
                 </li>
                 <li>
-                    <label for="phone">연락처</label>
-                    <input type="number" id="phone">
+                    <label for="modi_phone">연락처</label>
+                    <input type="text" id="modi_phone">
 
                 </li>
                 <li>
-                    <label for="cost">R/T</label>
-                    <input type="text" id="cost">
+                    <label for="modi_cost">R/T</label>
+                    <input type="text" id="modi_cost">
 
                 </li>
                 <li>
-                    <label for="kinds">상품유형</label>
-                    <input type="text" id="kinds">
+                    <label for="modi_kinds">상품유형</label>
+                    <input type="text" id="modi_kinds">
                 </li>
             </ul>
             <div class="button">
@@ -495,7 +495,7 @@
         function places() {
             $.ajax({
                 type: 'GET',
-                url: 'http://3min.yonghochoi.com/api/places?size=10',
+                url: 'https://3min.yonghochoi.com/api/places?size=10',
                 data: {},
                 success: function (response) {
                     const place = document.querySelector('#places');
@@ -509,12 +509,12 @@
                         place.innerHTML +=
                         `<ul class="table_data">
                             <li>${response.data[i].id}</li>
-                            <li><a href="">${response.data[i].place_type}</a></li>
+                            <li><a href="">${response.data[i].placeNum}</a></li>
                             <li><a href="">${response.data[i].name}</a></li>
                             <li><a href="">${response.data[i].assignee}</a></li>
-                            <li><a href="">${response.data[i].place_type}</a></li>
+                            <li><a href="">${response.data[i].phone}</a></li>
                             <li><a href="">${response.data[i].rt}</a></li>
-                            <li><a href="">${response.data[i].place_type}</a></li>
+                            <li><a href="">${response.data[i].placeType}</a></li>
                             <li><i class="fas fa-edit"></i></li>
                             <li><i class="fas fa-trash-alt"></i></li>
                         </ul>`
@@ -540,13 +540,15 @@
                         const rt = this.parentNode.parentNode.children[5].textContent
                         const placeType = this.parentNode.parentNode.children[6].textContent
 
-                        modifiedModal.querySelector('#pid').value = pid;
-                        modifiedModal.querySelector('#number').value = pnumber;
-                        modifiedModal.querySelector('#place').value = placeName;
-                        modifiedModal.querySelector('#pname').value = assignee;
-                        modifiedModal.querySelector('#phone').value = phone;
-                        modifiedModal.querySelector('#cost').value = rt;
-                        modifiedModal.querySelector('#kinds').value = placeType;
+                        console.log(pid, pnumber, placeName, assignee, phone, rt, placeType)
+
+                        modifiedModal.querySelector('#modi_pid').value = pid;
+                        modifiedModal.querySelector('#modi_number').value = pnumber;
+                        modifiedModal.querySelector('#modi_place').value = placeName;
+                        modifiedModal.querySelector('#modi_pname').value = assignee;
+                        modifiedModal.querySelector('#modi_phone').value = phone;
+                        modifiedModal.querySelector('#modi_cost').value = rt;
+                        modifiedModal.querySelector('#modi_kinds').value = placeType;
                     }
 
                     // 모달창에서 수정 submit눌렀을때 수정되는 ajax
@@ -555,22 +557,24 @@
 
                     function modified() {
 
-                        const pid = modifiedModal.querySelector('#pid').value
-                        const pnumber = modifiedModal.querySelector('#number').value
-                        const placeName = modifiedModal.querySelector('#place').value
-                        const assignee = modifiedModal.querySelector('#pname').value
-                        const phone = modifiedModal.querySelector('#phone').value
-                        const rt = modifiedModal.querySelector('#cost').value
-                        const placeType = modifiedModal.querySelector('#kinds').value
+                        const pid = modifiedModal.querySelector('#modi_pid').value
+                        const pnumber = modifiedModal.querySelector('#modi_number').value
+                        const placeName = modifiedModal.querySelector('#modi_place').value
+                        const assignee = modifiedModal.querySelector('#modi_pname').value
+                        const phone = modifiedModal.querySelector('#modi_phone').value
+                        const rt = modifiedModal.querySelector('#modi_cost').value
+                        const placeType = modifiedModal.querySelector('#modi_kinds').value
 
                         $.ajax({
                             type: 'PUT',
-                            url: `http://3min.yonghochoi.com/api/places/${pid}`,
+                            url: `https://3min.yonghochoi.com/api/places/${pid}`,
                             data: {
+                                placeNum: pnumber,
                                 name: placeName,
                                 assignee: assignee,
+                                phone: phone,
                                 rt: rt,
-                                place_type: placeType,
+                                placeType: placeType,
                             },
                             success: function (response) {
                                 console.log(response)
@@ -598,7 +602,7 @@
 
                         $.ajax({
                             type: 'DELETE',
-                            url: `http://3min.yonghochoi.com/api/places/${pid}`,
+                            url: `https://3min.yonghochoi.com/api/places/${pid}`,
                             data: {},
                             success: function (response) {
                                 console.log(response)
@@ -622,23 +626,24 @@
         addsubmit.addEventListener('click', addPlace)
 
         function addPlace() {
-            const number = document.querySelector('#number');
-            const place = document.querySelector('#place');
-            const pname = document.querySelector('#pname');
-            const phone = document.querySelector('#phone');
-            const cost = document.querySelector('#cost');
-            const kinds = document.querySelector('#kinds');
+            const pNumber = document.querySelector('#add_number').value;
+            const place = document.querySelector('#add_place').value;
+            const pname = document.querySelector('#add_pname').value;
+            const phone = document.querySelector('#add_phone').value;
+            const cost = document.querySelector('#add_cost').value;
+            const kinds = document.querySelector('#add_kinds').value;
+            console.log(pNumber, place, pname, phone, cost, kinds)
 
             $.ajax({
                 type: 'POST',
-                url: 'http://3min.yonghochoi.com/api/places',
+                url: 'https://3min.yonghochoi.com/api/places',
                 data: {
-                    place_type: number.value,
-                    name: place.value,
-                    assignee: pname.value,
-                    phone: phone.value,
-                    rt: cost.value,
-                    place_type: kinds.value,
+                    placeNum: pNumber,
+                    name: place,
+                    assignee: pname,
+                    phone: phone,
+                    rt: cost,
+                    placeType: kinds,
                 },
                 success: function (response) {
                     if (response['code'] === '200') {
