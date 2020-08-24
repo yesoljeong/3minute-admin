@@ -20,6 +20,10 @@
             color: #676A6C;
         }
 
+        .none{
+            display:none;
+        }
+
         body {
             background-color: #F3F3F4;
         }
@@ -69,24 +73,20 @@
             top: 100px;
             width: 15%;
             height: 100vh;
-            /* border:1px solid red; */
         }
 
         nav .login_info {
-            /* border:1px solid red; */
             text-align: center;
             padding: 50px 0;
             background-color: #233645;
         }
 
         nav .login_info .fas {
-            /* border: 1px solid red; */
             font-size: 50px;
             margin-bottom: 10px;
         }
 
         nav .login_info h3 {
-            /* border: 1px solid red; */
             color: #fff;
         }
 
@@ -152,7 +152,6 @@
             padding: 10px 20px;
             width: 100%;
             margin-bottom: 150px;
-            /* border: 1px solid red; */
         }
 
         section.harf {
@@ -207,12 +206,11 @@
             font-family: 'Noto Sans', sans-serif;
             font-family: 'Noto Sans KR', sans-serif;
             padding: 10px 0;
-            /* border: 1px solid red; */
         }
 
-        section .table_data.on{
-            background-color:#1AB394;
-            color:#fff;
+        section .table_data.on {
+            background-color: #1AB394;
+            color: #fff;
         }
 
         section .table_data li .fas {
@@ -325,7 +323,6 @@
             font-family: 'Noto Sans', sans-serif;
             font-family: 'Noto Sans KR', sans-serif;
             background-color: #fff;
-            /* border:1px solid red; */
         }
 
         aside li:nth-child(2n) {
@@ -491,97 +488,11 @@
                     <li><a href="" class="prev">next</a></li>
                 </ul>
             </section>
-            <aside class="">
+            <aside>
                 <div class="top">
                     <button class="add_btn">add+</button>
                 </div>
-                <ul class="clear">
-                    <li>
-                        <span>상담일자 : </span>
-                        <span>2020년 10월 2일</span>
-                    </li>
-                    <li>
-                        <span>상담사 : </span>
-                        <span>최용호</span>
-                    </li>
-                    <li>
-                        <span>매물번호 : </span>
-                        <span>200</span>
-                    </li>
-                    <li>
-                        <span>관심도 : </span>
-                        <span>★★★★★</span>
-                    </li>
-                    <li>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </li>
-                </ul>
-                <ul class="clear">
-                    <li>
-                        <span>상담일자 : </span>
-                        <span>2020년 8월 2일</span>
-                    </li>
-                    <li>
-                        <span>상담사 : </span>
-                        <span>최우철</span>
-                    </li>
-                    <li>
-                        <span>매물번호 : </span>
-                        <span>400</span>
-                    </li>
-                    <li>
-                        <span>관심도 : </span>
-                        <span>★★★★★</span>
-                    </li>
-                    <li>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </li>
-                </ul>
-                <ul class="clear">
-                    <li>
-                        <span>상담일자 : </span>
-                        <span>2020년 8월 2일</span>
-                    </li>
-                    <li>
-                        <span>상담사 : </span>
-                        <span>최우철</span>
-                    </li>
-                    <li>
-                        <span>매물번호 : </span>
-                        <span>400</span>
-                    </li>
-                    <li>
-                        <span>관심도 : </span>
-                        <span>★★★★★</span>
-                    </li>
-                    <li>
-                        <p>
-                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-                            been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                            galley of type and scrambled it to make a type specimen book. It has survived not only five
-                            centuries, but also the leap into electronic typesetting, remaining essentially unchanged.
-                            It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum
-                            passages, and more recently with desktop publishing software like Aldus PageMaker including
-                            versions of Lorem Ipsum.
-                        </p>
-                    </li>
-                </ul>
+                <div id="counsel"></div>
             </aside>
         </div>
         <article class="add_modal modal">
@@ -601,7 +512,7 @@
                 </li>
                 <li>
                     <label for="add_phone">연락처</label>
-                    <input type="number" id="add_phone">
+                    <input type="text" id="add_phone">
                 </li>
             </ul>
             <div class="button">
@@ -638,47 +549,49 @@
                 <input type="submit" value="수정">
             </div>
         </article>
-        <article class="counsel_modal modal">
+        <article class="modal add_counsel">
             <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
             <ul class="modal_popup">
-                <h2>상담 내역 입력</h2>
+                <h2>상담 내용</h2>
                 <li>
-                    <label for="counsel_pid">상담일자</label>
-                    <input type="text" id="counsel_pid">
+                    <label for="counsel_pid">상담 고유 아이디</label>
+                    <input type="number" id="counsel_pid">
                 </li>
                 <li>
-                    <label for="counsel_pname">상담사</label>
-                    <input type="text" id="counsel_pname">
+                    <label for="counsel_day">상담 일자</label>
+                    <input type="number" id="counsel_day">
                 </li>
                 <li>
-                    <label for="counsel_gender">매물번호</label>
-                    <input type="number" id="counsel_pname">
+                    <label for="counsel_assignee">상담사</label>
+                    <input type="text" id="counsel_assignee">
+
                 </li>
                 <li>
-                    <label for="counsel_phone">관심도</label>
-                    <!-- <input type="number" id="phone"> -->
+                    <label for="counsel_number">매물번호</label>
+                    <input type="text" id="counsel_number">
+
+                </li>
+                <li>
+                    <label for="counsel_Interest">관심도</label>
+                    <select name="" id="counsel_interest">
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="C">C</option>
+                        <option value="D">D</option>
+                    </select>
+                </li>
+                <li>
+                    <label for="counsel_text">상담내용</label>
+                    <textarea name="" id="counsel_text" cols="10" rows="10" ></textarea>
                 </li>
             </ul>
             <div class="button">
-                <input type="reset">
-                <input type="submit" value="수정">
+                <input type="submit" value="등록">
             </div>
         </article>
     </div>
-    <script src = "js/addCustomer.js"></script>
-    <script>
-
-        const addCounselBtn = document.querySelectorAll('aside .add_btn')
-        
-        for(let i=0; i<addCounselBtn.length; i++){
-            addCounselBtn[i].addEventListener('click' , counselMoadalOpen)
-        }
-
-        function counselMoadalOpen(){
-            
-        }
-
-    </script>
+    <script src="js/addCounsel.js"></script>
+    <script src="js/addCustomer.js"></script>
 </body>
 
 </html>

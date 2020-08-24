@@ -424,7 +424,6 @@
                 </li>
             </ul>
             <div class="button">
-                <input type="reset">
                 <input type="submit" value="등록">
             </div>
         </article>
@@ -438,7 +437,7 @@
                 </li>
                 <li>
                     <label for="modi_number">매물번호</label>
-                    <input type="text" id="modi_number">
+                    <input type="number" id="modi_number">
                 </li>
                 <li>
                     <label for="modi_place">현장명</label>
@@ -457,7 +456,7 @@
                 </li>
                 <li>
                     <label for="modi_cost">R/T</label>
-                    <input type="text" id="modi_cost">
+                    <input type="number" id="modi_cost">
 
                 </li>
                 <li>
@@ -466,17 +465,15 @@
                 </li>
             </ul>
             <div class="button">
-                <input type="reset">
                 <input type="submit" value="수정">
             </div>
-        </article>
+        </article>       
     </div>
     <script>
         modal();
         places();
 
         // 모달팝업 open close
-
         function modal() {
             const modalPopup = document.querySelector('.add_place');
             const addBtn = document.querySelector('.add_btn');
