@@ -149,6 +149,7 @@ function customers() {
                 if (aside.classList.contains('on') && section.classList.contains('harf')) {
                     aside.classList.remove('on');
                     section.classList.remove('harf');
+                    location.reload();
                     // tableData.classList.remove('on');
 
                 } else {
@@ -174,11 +175,19 @@ function customers() {
                             counsel.innerHTML +=
                                 `<ul class="clear">
                                     <li>
+                                        <span>상담일자 : </span>
+                                        <span>일자 넣어줘</span>
+                                    </li>
+                                    <li>
+                                        <span>고객명 : </span>
+                                        <span>${response.data[i].customerName}</span>
+                                    </li>
+                                    <li>
                                         <span>상담사 : </span>
                                         <span>${response.data[i].counselorName}</span>
                                     </li>
                                     <li>
-                                        <span>매물번호 : </span>
+                                        <span>매물명 : </span>
                                         <span>${response.data[i].placeName}</span>
                                     </li>
                                     <li>
@@ -194,7 +203,6 @@ function customers() {
                 });
 
                 // 카운셀 등록
-
                 const counselSubmit = counselModal.querySelector('input[type=submit]');
                 const counselPid = document.querySelector('#counsel_pid');
                 counselSubmit.addEventListener('click', addcounsel)
@@ -205,20 +213,21 @@ function customers() {
                     const counselId = e.target.parentNode.parentNode.querySelector('#counsel_pid').textContent;
 
                     const counselDay = document.querySelector('#counsel_day').value;
-                    const counselAssignee = document.querySelector('#counsel_assignee').value;
-                    const counselNumber = document.querySelector('#counsel_number').value;
+                    const counselPlace = document.querySelector('#counsel_placename').value;
+                    const counselName = document.querySelector('#counsel_name').value;
+                    const counselAssignee = document.querySelector('#counsel_assignee').value;               
                     const counselInterest = document.querySelector('#counsel_interest').value;
                     const counselText = document.querySelector('#counsel_text').value;
 
-                    console.log(counselId, counselDay, counselAssignee, counselNumber, counselInterest, counselText)
+                    console.log(counselPlace, counselName, counselAssignee, counselInterest, counselText)
 
                     $.ajax({
                         type: 'POST',
                         url: `https://3min.yonghochoi.com/api/counsels?customer_id=${counselId}`,
                         data: {
-                            customerName: counselDay,
-                            counselorName: counselAssignee,
-                            placeName: counselNumber,
+                            placeName: counselPlace,
+                            customerName: counselName,
+                            counselorName: counselAssignee,                          
                             interest: counselInterest,
                             content: counselText,
                         },
@@ -253,17 +262,17 @@ const submit = document.querySelector('input[type=submit]')
 submit.addEventListener('click', addUser)
 
 function addUser() {
-    const pname = document.querySelector('#add_pname');
-    const gender = document.querySelector('#add_gender');
-    const phone = document.querySelector('#add_phone');
+    const pname = document.querySelector('#add_pname').value;
+    const gender = document.querySelector('#add_gender').value;
+    const phone = document.querySelector('#add_phone').value;
 
     $.ajax({
         type: 'POST',
         url: 'https://3min.yonghochoi.com/api/customers',
         data: {
-            name: pname.value,
-            gender: gender.value,
-            phone: phone.value,
+            name: pname,
+            gender: gender,
+            phone: phone,
         },
         success: function (response) {
             if (response['code'] === '200') {

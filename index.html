@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common_reset.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
@@ -11,91 +12,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <title>3분 부동산 admin</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            text-decoration: none;
-            list-style: none;
-            box-sizing: border-box;
-            color: #676A6C;
-        }
-
-        body {
-            background-color: #F3F3F4;
-        }
-
-        .clear::after {
-            content: "";
-            display: block;
-            clear: both;
-        }
-
-        /* HEADER */
-        header {
-            position: relative;
-            height: 100px;
-        }
-
-        header h1 {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 20px;
-            text-align: center;
-            font-family: 'Noto Sans', sans-serif;
-            font-family: 'Noto Sans KR', sans-serif;
-            color: #fff;
-            background-color: #1AB394;
-            height: 100px;
-        }
-
-        header .fas {
-            color: #fff;
-        }
-
-        /* NAV */
-        nav,
-        section {
-            background-color: #fff;
-            border: 1px solid #E7EAEC;
-        }
-
-        nav {
-            float: left;
-            background-color: #233645;
-            position: fixed;
-            top: 100px;
-            width: 15%;
-            height: 100vh;
-            /* border:1px solid red; */
-        }
-
-        nav .login_info {
-            /* border:1px solid red; */
-            text-align: center;
-            padding: 50px 0;
-            background-color: #233645;
-        }
-
-        nav .login_info .fas {
-            /* border: 1px solid red; */
-            font-size: 50px;
-            margin-bottom: 10px;
-        }
-
-        nav .login_info h3 {
-            /* border: 1px solid red; */
-            color: #fff;
-        }
-
-        nav ul li {
-            font-weight: 700;
-            font-family: 'Noto Sans', sans-serif;
-            font-family: 'Noto Sans KR', sans-serif;
-            padding: 10px 20px;
-        }
-
         nav ul li:nth-child(2) {
             background-color: #1AB394;
             color: #fff;
@@ -104,21 +20,6 @@
         nav ul li:nth-child(2) span,
         nav ul li:nth-child(2) .fas {
             color: #fff;
-        }
-
-        nav ul li a {
-            vertical-align: middle;
-            color: #9FAABE;
-            display: inline-block;
-            width: 100%;
-            height: 100%;
-        }
-
-        nav .fas {
-            font-size: 20px;
-            vertical-align: middle;
-            margin-right: 15px;
-            color: #9FAABE;
         }
 
         /* SECTION */
@@ -143,6 +44,12 @@
             border: 1px solid #c8c9ca;
             border-radius: 5px;
             cursor: pointer;
+            color: #fff;
+            margin-right: 10px;
+        }
+
+        section .top button .fas {
+            margin-left: 5px;
             color: #fff;
         }
 
@@ -232,103 +139,6 @@
         section .table_data li:nth-child(3) {
             width: 40%;
         }
-
-        /* PAGENATION */
-        section .pagenation {
-            justify-content: center;
-            margin: 50px 0;
-            border-bottom: 0;
-        }
-
-        section .pagenation li a {
-            border: 1px solid #E7EAEC;
-            padding: 8px 13px;
-        }
-
-        section .pagenation li a.on {
-            background-color: #1AB394;
-            color: #fff;
-        }
-
-        /* MODAL */
-        .modal {
-            display: none;
-            margin: 0 auto;
-            width: 500px;
-            background-color: #fff;
-            position: fixed;
-            box-shadow: 0px 0px 1px 10000px rgba(0, 0, 0, .5);
-            left: 50%;
-            top: 50px;
-            transform: translate(-50%);
-            padding: 20px 40px;
-            border-radius: 5px;
-            border: 10px solid #1AB394;
-        }
-
-        .modal.on {
-            display: block;
-        }
-
-        .modal .close_btn {
-            display: block;
-            text-align: right;
-        }
-
-        .modal .close_btn .fas {
-            text-align: right;
-            color: #1AB394;
-            font-size: 25px;
-        }
-
-        .modal h2 {
-            text-align: center;
-            margin-bottom: 30px;
-            font-family: 'Noto Sans KR', sans-serif;
-        }
-
-        .modal li {
-            margin-bottom: 20px;
-            box-sizing: border-box;
-        }
-
-        .modal label {
-            display: inline-block;
-            width: 150px;
-            font-family: 'Noto Sans', sans-serif;
-            font-family: 'Noto Sans KR', sans-serif;
-            box-sizing: border-box;
-        }
-
-        .modal input {
-            display: inline-block;
-            width: 60%;
-            padding: 10px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-            border: 1px solid #c8c9ca;
-            border-radius: 5px;
-        }
-
-        .modal .button {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .modal .button input {
-            width: 20%;
-            margin: 0 20px;
-            border: 1px solid #9FAABE;
-            font-family: 'Noto Sans', sans-serif;
-            font-family: 'Noto Sans KR', sans-serif;
-            background-color: #E7EAEC;
-        }
-
-        .modal .button input:hover {
-            background-color: #1AB394;
-            color: #fff;
-        }
     </style>
 </head>
 
@@ -336,8 +146,10 @@
     <div class="wrap clear">
         <header>
             <h1>
-                <i class="fas fa-home"></i>
-                3분 부동산
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    3분 부동산
+                </a>
             </h1>
         </header>
         <nav>
@@ -368,7 +180,7 @@
                     <input type="search">
                     <a href=""><i class="fas fa-search"></i></a>
                 </div>
-                <button class="add_btn">add+</button>
+                <button class="add_btn">add<i class="fas fa-plus-circle"></i></button>
             </div>
             <ul class="table_title">
                 <li class="none">아이디</li>
@@ -467,7 +279,7 @@
             <div class="button">
                 <input type="submit" value="수정">
             </div>
-        </article>       
+        </article>
     </div>
     <script>
         modal();
@@ -504,7 +316,7 @@
 
                     for (let i = 0; i < response.data.length; i++) {
                         place.innerHTML +=
-                        `<ul class="table_data">
+                            `<ul class="table_data">
                             <li>${response.data[i].id}</li>
                             <li><a href="">${response.data[i].placeNum}</a></li>
                             <li><a href="">${response.data[i].name}</a></li>
