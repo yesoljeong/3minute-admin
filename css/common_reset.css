@@ -133,7 +133,7 @@ table {
     border-spacing: 0;
 }
 
-a{
+a {
     text-decoration: none;
 }
 
@@ -176,7 +176,7 @@ header h1 {
     color: #fff;
     background-color: #1AB394;
     height: 100px;
-    font-size:30px;
+    font-size: 30px;
     letter-spacing: 2px;
     font-weight: 700;
 }
@@ -239,21 +239,62 @@ nav .fas {
     color: #9FAABE;
 }
 
+/* search bar */
+section .search_bar {
+    text-align: right;
+    position:relative;
+}
+
+section .search_bar input {
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #c8c9ca;
+    margin-right: 15px;
+}
+
+section .search_bar .fas {
+    position: absolute;
+    right:0;
+    top:7px;
+    padding-right: 20px;
+    color: #1AB394;
+    font-size: 25px;
+    vertical-align: middle;
+}
+
 /* PAGENATION */
-section .pagenation {
-    justify-content: center;
-    margin: 50px 0;
+section #pagenation {
+    margin: 50px auto;
     border-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-section .pagenation li a {
+section #pagenation span {
     border: 1px solid #E7EAEC;
-    padding: 8px 13px;
+    padding: 8px 11px;
+    display: block;
+    cursor: pointer;
 }
 
-section .pagenation li a.on {
+section #pagenation span:hover {
     background-color: #1AB394;
     color: #fff;
+}
+
+section #pagenation span.on {
+    background-color: #1AB394;
+    color: #fff;
+}
+
+section #pagenation i{
+    border:1px solid #E7EAEC;
+    width:100%;
+    height:100%;
+    display:block;
+    padding:8px 11px;
 }
 
 /* MODAL */
@@ -293,7 +334,7 @@ section .pagenation li a.on {
     text-align: center;
     margin-bottom: 30px;
     font-family: 'Noto Sans KR', sans-serif;
-    font-size:20px;
+    font-size: 20px;
     font-weight: 700;
 }
 
@@ -311,7 +352,7 @@ section .pagenation li a.on {
     vertical-align: middle;
 }
 
-.add_counsel li:last-child label{
+.add_counsel li:last-child label {
     vertical-align: top;
 }
 
@@ -339,7 +380,7 @@ section .pagenation li a.on {
     font-family: 'Noto Sans', sans-serif;
     font-family: 'Noto Sans KR', sans-serif;
     background-color: #E7EAEC;
-    transition:all .3s linear;
+    transition: all .3s linear;
 }
 
 .modal .button input:hover {
@@ -347,7 +388,7 @@ section .pagenation li a.on {
     color: #fff;
 }
 
-.modal textarea{
-    resize:vertical;
-    height:100px;
+.modal textarea {
+    resize: vertical;
+    height: 100px;
 }

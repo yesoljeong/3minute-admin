@@ -41,7 +41,7 @@ function customers() {
             }
             for (let i = 0; i < response.data.length; i++) {
                 customer.innerHTML +=
-                    `<ul class="table_data" id="${response.data[i].id}">
+                `<ul class="table_data" id="${response.data[i].id}">
                     <li class="pid">${response.data[i].id}</li>
                     <li>${[i+1]}</li>
                     <li>${response.data[i].name}</li>
