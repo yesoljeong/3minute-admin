@@ -1,5 +1,4 @@
 (function(){    // 전역 변수 사용을 제한하기 위해 즉시 실행 함수 사용
-    modal();
     places();
 
     // 모달팝업 open close
@@ -146,11 +145,10 @@ function modified() {
             console.log(response)
             if (response['code'] === '200') {
                 alert('수정 하였습니다');
-                // location.reload();
             } else {
                 alert('수정에 실패했습니다');
-                // location.reload();
             }
+            location.reload();
         }
     });
 }
