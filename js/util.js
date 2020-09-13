@@ -16,3 +16,13 @@ function reload(pNum) {
     var newUrl = window.location.origin + window.location.pathname + "?page=" + pNum;
     window.location.href = newUrl;
 }
+
+function getClosest(elem, tagName) {
+	for ( ; elem && elem !== document; elem = elem.parentNode ) {
+		if(elem.tagName.toLowerCase() === tagName.toLowerCase()) {
+            return elem;
+        }
+    }
+    
+    return null;
+};
