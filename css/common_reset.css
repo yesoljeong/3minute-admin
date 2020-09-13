@@ -299,7 +299,7 @@ section #pagenation i {
     height: 100%;
     display: block;
     padding: 8px 11px;
-    font-size:13px;
+    font-size: 13px;
 }
 
 /* MODAL */
@@ -309,6 +309,7 @@ section #pagenation i {
     width: 500px;
     background-color: #fff;
     position: fixed;
+    -webkit-box-shadow: 0px 0px 1px 10000px rgba(0, 0, 0, .5);
     box-shadow: 0px 0px 1px 10000px rgba(0, 0, 0, .5);
     left: 55%;
     top: 50px;

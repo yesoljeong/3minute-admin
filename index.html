@@ -310,7 +310,7 @@
                 startPage = (parseInt(pageNum / 10) * 10) + 1;
             }
 
-            return startPage;
+            return parseInt(startPage);
         }
 
         // ajax
@@ -320,35 +320,34 @@
                 url: `https://3min.yonghochoi.com/api/places?size=10&page=${getParam("page")}`,
                 data: {},
                 success: function (response) {
-                    console.log(response)
-                    const pageNum = response.page.page;
-                    const totalCount = response.page.totalCount;
-
-                    let pageTotalCount = totalCount / 10;
-                    if (totalCount % 10 > 0) {
-                        pageTotalCount += 1;
-                    }
-
-                    let startPage = getStartPage(pageNum);
-
-                    let endPage = startPage + 9;
-                    if (endPage > pageTotalCount) {
-                        endPage = pageTotalCount;
-                    }
-
-
-                    console.log(`현재 선택한 페이지 = ${pageNum}`)
-                    console.log(`현재 선택한 페이지가 속한 페이지 범위 = ${startPage} ~ ${endPage}`)
-                    console.log(`전체 보여져야할 페이지 수 = ${pageTotalCount}`)
-
-
-                    const place = document.querySelector('#places');
-
                     if (!response.data) { //null이든 undefind든 메시지가 나오게 함
                         alert('데이터가 없습니다.')
                         return;
                     }
 
+                    console.log(response)
+                    const pageNum = response.page.page;
+                    const totalCount = response.page.totalCount;
+
+                    let pageTotalCount = parseInt(totalCount / 10);
+                    if (totalCount % 10 > 0) {
+                        pageTotalCount += 1;
+                    }
+
+                    let startPage = getStartPage(pageNum);
+                    let endPage = startPage + 10;
+                    if (endPage > pageTotalCount) { // 계산으로 산출된 마지막 페이지 번호보다 실제 마지막 페이지 번호가 작으면 실제 마지막 페이지 번호로 대체
+                        endPage = pageTotalCount;  
+                    }
+                    endPage -= 1;    // 시작 페이지 인덱스가 0부터 시작하므로 -1 해줌
+
+                    console.log(`현재 선택한 페이지 = ${pageNum}`)
+                    console.log(`현재 선택한 페이지가 속한 페이지 범위 = ${startPage} ~ ${endPage}`)
+                    console.log(`전체 보여져야할 페이지 수 = ${pageTotalCount}`)
+                    
+                    
+
+                    const place = document.querySelector('#places');
                     for (let i = 0; i < response.data.length; i++) {
                         place.innerHTML +=
                             `<ul class="table_data">
@@ -365,17 +364,13 @@
                     }
 
                     const modifiedBtn = document.querySelectorAll('.fa-edit');
-
                     for (let i = 0; i < modifiedBtn.length; i++) {
                         modifiedBtn[i].addEventListener('click', clickModified);
                     }
 
                     const modifiedModal = document.querySelector('.modified_modal')
-
                     function clickModified() {
-
                         modifiedModal.classList.add('on');
-
                         const pid = this.parentNode.parentNode.children[0].textContent
                         const pnumber = this.parentNode.parentNode.children[1].textContent
                         const placeName = this.parentNode.parentNode.children[2].textContent
@@ -398,9 +393,7 @@
                     // 모달창에서 수정 submit눌렀을때 수정되는 ajax
                     const modifiedsubmit = document.querySelector('.modified_modal input[type=submit]')
                     modifiedsubmit.addEventListener('click', modified)
-
                     function modified() {
-
                         const pid = modifiedModal.querySelector('#modi_pid').value
                         const pnumber = modifiedModal.querySelector('#modi_number').value
                         const placeName = modifiedModal.querySelector('#modi_place').value
@@ -435,7 +428,6 @@
 
                     // 데이터 삭제 ajax
                     const delBtn = document.querySelectorAll('.fa-trash-alt')
-
                     for (let i = 0; i < delBtn.length; i++) {
                         delBtn[i].addEventListener('click', deleteBtnWork)
                     }
@@ -469,9 +461,7 @@
 
         // 데이터 서버에 전달 ajax
         const addsubmit = document.querySelector('.add_place input[type=submit]')
-
         addsubmit.addEventListener('click', addPlace)
-
         function addPlace() {
             const pNumber = document.querySelector('#add_number').value;
             const place = document.querySelector('#add_place').value;
@@ -605,5 +595,4 @@
         }
     </script>
 </body>
-
 </html>
