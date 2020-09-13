@@ -260,24 +260,5 @@
         </article>
     </div>
     <script src="js/place.js"></script>
-    <script>
-        modal();
-        places();
-
-        // 모달팝업 open close
-        function modal() {
-            const modalPopup = document.querySelector('.add_place');
-            const addBtn = document.querySelector('.add_btn');
-            const closeBtn = document.querySelector('.close_btn');
-
-            closeBtn.addEventListener('click', addModal);
-            addBtn.addEventListener('click', addModal);
-
-            function addModal() {
-                modalPopup.classList.remove('on');
-                modalPopup.classList.add('on')
-            }
-        };
-    </script>
 </body>
 </html>

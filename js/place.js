@@ -1,3 +1,25 @@
+(function(){    // 전역 변수 사용을 제한하기 위해 즉시 실행 함수 사용
+    modal();
+    places();
+
+    // 모달팝업 open close
+    const addBtn = document.querySelector('.add_btn');
+    const closeBtn = document.querySelector('.close_btn');
+    closeBtn.addEventListener('click', addModal);
+    addBtn.addEventListener('click', addModal);
+    
+    // 데이터 서버에 전달 ajax
+    const addsubmit = document.querySelector('.add_place input[type=submit]')
+    addsubmit.addEventListener('click', addPlace)    
+}());
+
+function addModal() {
+    const modalPopup = document.querySelector('.add_place');
+    modalPopup.classList.remove('on');
+    modalPopup.classList.add('on')
+}
+
+// 페이지에 현장 리스트 테이블 표시
 function places() {
     $.ajax({
         type: 'GET',
@@ -8,7 +30,7 @@ function places() {
                 alert('데이터가 없습니다.')
                 return;
             }
-            
+
             makePlaceRow(response);
             const pageNum = response.page.page;
             const totalCount = response.page.totalCount;
@@ -53,6 +75,7 @@ function makePlaceRow(response) {
     }
 }
 
+// 삭제 아이콘 클릭 시 서버에 삭제 요청
 function deleteBtnWork(e) {
     const pid = e.target.parentNode.parentNode.firstElementChild.textContent
     console.log(pid)
@@ -65,15 +88,16 @@ function deleteBtnWork(e) {
             console.log(response)
             if (response['code'] === '200') {
                 alert('삭제 하였습니다');
-                // location.reload();
             } else {
                 alert('삭제에 실패했습니다');
-                // location.reload();
             }
+
+            location.reload();
         }
     });
 }
 
+// 수정 아이콘 클릭 시 팝업창 표시
 function clickPlaceModified() {
     const modifiedModal = document.querySelector('.modified_modal')
     modifiedModal.classList.add('on');
@@ -96,6 +120,7 @@ function clickPlaceModified() {
     modifiedModal.querySelector('#modi_kinds').value = placeType;
 }
 
+// 수정 팝업 창에서 수정 버튼 클릭 시 서버에 수정 요청
 function modified() {
     const modifiedModal = document.querySelector('.modified_modal')
     const pid = modifiedModal.querySelector('#modi_pid').value
@@ -130,9 +155,6 @@ function modified() {
     });
 }
 
-// 데이터 서버에 전달 ajax
-const addsubmit = document.querySelector('.add_place input[type=submit]')
-addsubmit.addEventListener('click', addPlace)
 function addPlace() {
     const pNumber = document.querySelector('#add_number').value;
     const place = document.querySelector('#add_place').value;
