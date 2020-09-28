@@ -12,7 +12,8 @@ jobs:
       uses: actions/checkout@v1
     - name: copy and restart
       run: |
-        mv 3minute-admin /home/ubuntu/nginx/static
+        pwd
+        ls -l
+        mv _work/3minute-admin/3minute-admin /home/ubuntu/nginx/static
         cd /home/ubuntu/nginx
         docker-compose restart
-        
