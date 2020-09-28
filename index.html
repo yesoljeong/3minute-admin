@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/common_reset.css">
-    <link rel="stylesheet" media="screen and (max-width: 980px)" href="css/pad.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/common_reset.css" />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
-        rel="stylesheet">
+            rel="stylesheet"
+            media="screen and (max-width: 980px)"
+            href="css/pad.css"
+    />
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"
+            rel="stylesheet"
+    />
+    <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+    />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/util.js"></script>
     <script src="js/pagination.js"></script>
+    <script src="js/user.js"></script>
     <title>3분 부동산 admin</title>
     <style>
         nav ul li:nth-child(2) {
-            background-color: #1AB394;
+            background-color: #1ab394;
             color: #fff;
         }
 
@@ -43,7 +51,7 @@
         section .top button {
             width: 80px;
             padding: 10px;
-            background-color: #1AB394;
+            background-color: #1ab394;
             border: 1px solid #c8c9ca;
             border-radius: 5px;
             cursor: pointer;
@@ -59,7 +67,7 @@
         section ul {
             display: flex;
             justify-content: space-around;
-            border-bottom: 1px solid #E7EAEC;
+            border-bottom: 1px solid #e7eaec;
         }
 
         section .table_title {
@@ -69,15 +77,15 @@
 
         section ul li {
             font-size: 14px;
-            font-family: 'Noto Sans', sans-serif;
-            font-family: 'Noto Sans KR', sans-serif;
+            font-family: "Noto Sans", sans-serif;
+            font-family: "Noto Sans KR", sans-serif;
             padding: 15px 0;
         }
 
         /* section #places {
-            display: flex;
-            flex-flow: column-reverse;
-        } */
+        display: flex;
+        flex-flow: column-reverse;
+    } */
 
         section .table_data li .fas {
             font-size: 18px;
@@ -85,8 +93,7 @@
         }
 
         section .table_data li .fas:hover {
-            color: #1AB394;
-
+            color: #1ab394;
         }
 
         section .table_title li,
@@ -123,142 +130,151 @@
         section .table_data li:nth-child(3) {
             width: 40%;
         }
+        .profile {
+            vertical-align: middle;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
     </style>
 </head>
 
 <body>
-    <div class="wrap clear">
-        <header>
-            <h1>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    3분 부동산
+<div class="wrap clear">
+    <header>
+        <h1>
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                3분 부동산
+            </a>
+        </h1>
+    </header>
+    <nav>
+        <ul>
+            <li class="login_info">
+                <a href="">
+                    <img
+                            id="profile-picture"
+                            src=""
+                            alt="Profile"
+                            class="profile"
+                    />
+                    <h3 id="profile-name"></h3>
                 </a>
-            </h1>
-        </header>
-        <nav>
-            <ul>
-                <li class="login_info">
-                    <a href="">
-                        <i class="fas fa-meh"></i>
-                        <h3>최용호님</h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="index.html">
-                        <i class="fas fa-building"></i>
-                        <span>현장 LIST</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="customer.html">
-                        <i class="fas fa-address-book"></i>
-                        <span>고객 LIST</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <section>
-            <div class="top">
-                <div class="search_bar">
-                    <input type="search">
-                    <a href=""><i class="fas fa-search"></i></a>
-                </div>
-                <button class="add_btn">add<i class="fas fa-plus-circle"></i></button>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-building"></i>
+                    <span>현장 LIST</span>
+                </a>
+            </li>
+            <li>
+                <a href="customer.html">
+                    <i class="fas fa-address-book"></i>
+                    <span>고객 LIST</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <section>
+        <div class="top">
+            <div class="search_bar">
+                <input type="search" />
+                <a href=""><i class="fas fa-search"></i></a>
             </div>
-            <ul class="table_title">
-                <li class="none">아이디</li>
-                <li>매물번호</li>
-                <li>현장명</li>
-                <li>담당자</li>
-                <li>연락처</li>
-                <li>R/T</li>
-                <li>상품유형</li>
-                <li>수정</li>
-                <li>삭제</li>
-            </ul>
-            <div id="places"></div>
-            <div id="pagenation"></div>
-        </section>
-        <article class="modal add_place">
-            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
-            <ul class="modal_popup">
-                <h2>현장정보 입력</h2>
-                <li>
-                    <label for="add_number">매물번호</label>
-                    <input type="text" id="add_number">
-                </li>
-                <li>
-                    <label for="add_place">현장명</label>
-                    <input type="text" id="add_place">
-
-                </li>
-                <li>
-                    <label for="add_pname">담당자</label>
-                    <input type="text" id="add_pname">
-
-                </li>
-                <li>
-                    <label for="add_phone">연락처</label>
-                    <input type="text" id="add_phone">
-
-                </li>
-                <li>
-                    <label for="add_cost">R/T</label>
-                    <input type="text" id="add_cost">
-
-                </li>
-                <li>
-                    <label for="add_kinds">상품유형</label>
-                    <input type="text" id="add_kinds">
-                </li>
-            </ul>
-            <div class="button">
-                <input type="submit" value="등록">
-            </div>
-        </article>
-        <article class="modal modified_modal">
-            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
-            <ul class="modal_popup">
-                <h2>등록정보 수정</h2>
-                <li class="none">
-                    <label for="modi_pid">고유아이디</label>
-                    <input type="text" id="modi_pid">
-                </li>
-                <li>
-                    <label for="modi_number">매물번호</label>
-                    <input type="number" id="modi_number">
-                </li>
-                <li>
-                    <label for="modi_place">현장명</label>
-                    <input type="text" id="modi_place">
-
-                </li>
-                <li>
-                    <label for="modi_pname">담당자</label>
-                    <input type="text" id="modi_pname">
-
-                </li>
-                <li>
-                    <label for="modi_phone">연락처</label>
-                    <input type="text" id="modi_phone">
-
-                </li>
-                <li>
-                    <label for="modi_cost">R/T</label>
-                    <input type="number" id="modi_cost">
-
-                </li>
-                <li>
-                    <label for="modi_kinds">상품유형</label>
-                    <input type="text" id="modi_kinds">
-                </li>
-            </ul>
-            <div class="button">
-                <input type="submit" value="수정">
-            </div>
-        </article>
-    </div>
-    <script src="js/place.js"></script>
+            <button class="add_btn">
+                add<i class="fas fa-plus-circle"></i>
+            </button>
+        </div>
+        <ul class="table_title">
+            <li class="none">아이디</li>
+            <li>매물번호</li>
+            <li>현장명</li>
+            <li>담당자</li>
+            <li>연락처</li>
+            <li>R/T</li>
+            <li>상품유형</li>
+            <li>수정</li>
+            <li>삭제</li>
+        </ul>
+        <div id="places"></div>
+        <div id="pagenation"></div>
+    </section>
+    <article class="modal add_place">
+        <a href="" class="close_btn"
+        ><i class="fas fa-times-circle"></i
+            ></a>
+        <ul class="modal_popup">
+            <h2>현장정보 입력</h2>
+            <li>
+                <label for="add_number">매물번호</label>
+                <input type="text" id="add_number" />
+            </li>
+            <li>
+                <label for="add_place">현장명</label>
+                <input type="text" id="add_place" />
+            </li>
+            <li>
+                <label for="add_pname">담당자</label>
+                <input type="text" id="add_pname" />
+            </li>
+            <li>
+                <label for="add_phone">연락처</label>
+                <input type="text" id="add_phone" />
+            </li>
+            <li>
+                <label for="add_cost">R/T</label>
+                <input type="text" id="add_cost" />
+            </li>
+            <li>
+                <label for="add_kinds">상품유형</label>
+                <input type="text" id="add_kinds" />
+            </li>
+        </ul>
+        <div class="button">
+            <input type="submit" value="등록" />
+        </div>
+    </article>
+    <article class="modal modified_modal">
+        <a href="" class="close_btn"
+        ><i class="fas fa-times-circle"></i
+            ></a>
+        <ul class="modal_popup">
+            <h2>등록정보 수정</h2>
+            <li class="none">
+                <label for="modi_pid">고유아이디</label>
+                <input type="text" id="modi_pid" />
+            </li>
+            <li>
+                <label for="modi_number">매물번호</label>
+                <input type="number" id="modi_number" />
+            </li>
+            <li>
+                <label for="modi_place">현장명</label>
+                <input type="text" id="modi_place" />
+            </li>
+            <li>
+                <label for="modi_pname">담당자</label>
+                <input type="text" id="modi_pname" />
+            </li>
+            <li>
+                <label for="modi_phone">연락처</label>
+                <input type="text" id="modi_phone" />
+            </li>
+            <li>
+                <label for="modi_cost">R/T</label>
+                <input type="number" id="modi_cost" />
+            </li>
+            <li>
+                <label for="modi_kinds">상품유형</label>
+                <input type="text" id="modi_kinds" />
+            </li>
+        </ul>
+        <div class="button">
+            <input type="submit" value="수정" />
+        </div>
+    </article>
+</div>
+<script src="js/place.js"></script>
 </body>
 </html>
