@@ -4,18 +4,15 @@ on:
     branches:
       - master
 jobs:
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check out
-      uses: actions/checkout@v1
-      
   deploy:
-    needs: [build]
     name: Deploy
     runs-on: [threemin]
     steps:
     - name: Check out
       uses: actions/checkout@v1
-    
+    - name: copy and restart
+      run: |
+        mv 3minute-admin /home/ubuntu/nginx/static
+        cd /home/ubuntu/nginx
+        docker-compose restart
+        
