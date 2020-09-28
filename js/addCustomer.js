@@ -37,6 +37,10 @@ function customers() {
         )}`,
         data: {},
         success: function (response) {
+            if(response.code === "300") {
+                window.location.href = response.data;
+            }
+            
             if (!response.data) {
                 //null이든 undefind든 메시지가 나오게 함
                 alert("데이터가 없습니다");

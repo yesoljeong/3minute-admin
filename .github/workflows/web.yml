@@ -1,0 +1,21 @@
+name: Go
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out
+      uses: actions/checkout@v1
+      
+  deploy:
+    needs: [build]
+    name: Deploy
+    runs-on: [threemin]
+    steps:
+    - name: Check out
+      uses: actions/checkout@v1
+    

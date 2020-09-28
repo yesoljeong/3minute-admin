@@ -21,6 +21,10 @@ function loadPlaceNames() {
         url: `https://3min.yonghochoi.com/api/places/name`,
         data: {},
         success: function (response) {
+            if(response.code === "300") {
+                window.location.href = response.data;
+            }
+            
             if (!response.data) {
                 console.log("현장 정보가 존재하지 않습니다.");
                 return;
