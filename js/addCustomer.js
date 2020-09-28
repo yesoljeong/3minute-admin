@@ -32,15 +32,9 @@
 function customers() {
     $.ajax({
         type: "GET",
-        url: `https://3min.yonghochoi.com/api/customers?size=10&page=${getParam(
-            "page"
-        )}`,
+        url: `https://3min.yonghochoi.com/api/customers?size=10&page=${getParam("page")}&q=${getParam("q")}`,
         data: {},
         success: function (response) {
-            if(response.code === "300") {
-                window.location.href = response.data;
-            }
-            
             if (!response.data) {
                 //null이든 undefind든 메시지가 나오게 함
                 alert("데이터가 없습니다");
@@ -120,7 +114,6 @@ function deleteWork(e) {
 
 function showAside(e) {
     e.preventDefault();
-    debugger;
     const parentUl = getClosest(e.currentTarget, "ul");
     const ulItems = parentUl.getElementsByTagName("li");
     const customerName = ulItems[2].textContent;

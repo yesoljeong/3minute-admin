@@ -12,9 +12,9 @@ function getParam(sname) {
     return sval;
 }
 
-function reload(pNum) {
-    var newUrl = window.location.origin + window.location.pathname + "?page=" + pNum;
-    window.location.href = newUrl;
+function reload(pNum, query) {
+    const param = `page=${pNum}&q=${query}`;
+    window.location.href = `${window.location.origin + window.location.pathname}?${encodeURI(param)}`;
 }
 
 function getClosest(elem, tagName) {

@@ -22,13 +22,13 @@ function addModal() {
 function places() {
     $.ajax({
         type: 'GET',
-        url: `https://3min.yonghochoi.com/api/places?size=10&page=${getParam("page")}`,
+        url: `https://3min.yonghochoi.com/api/places?size=10&page=${getParam("page")}&q=${getParam("q")}`,
         data: {},
         success: function (response) {
             if(response.code === "300") {
                 window.location.href = response.data;
             }
-            
+
             if (!response.data) { //null이든 undefind든 메시지가 나오게 함
                 alert('데이터가 없습니다.')
                 return;
@@ -88,10 +88,6 @@ function deleteBtnWork(e) {
         url: `https://3min.yonghochoi.com/api/places/${pid}`,
         data: {},
         success: function (response) {
-            if(response.code === "300") {
-                window.location.href = response.data;
-            }
-
             console.log(response)
             if (response['code'] === '200') {
                 alert('삭제 하였습니다');
@@ -150,10 +146,6 @@ function modified() {
             placeType: placeType,
         },
         success: function (response) {
-            if(response.code === "300") {
-                window.location.href = response.data;
-            }
-
             console.log(response)
             if (response['code'] === '200') {
                 alert('수정 하였습니다');
@@ -186,10 +178,6 @@ function addPlace() {
             placeType: kinds,
         },
         success: function (response) {
-            if(response.code === "300") {
-                window.location.href = response.data;
-            }
-            
             if (response['code'] === '200') {
                 alert('저장하였습니다');
                 // location.reload();

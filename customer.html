@@ -9,8 +9,8 @@
     <link rel="stylesheet" media="screen and (max-width: 980px)" href="css/pad.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&family=Noto+Sans:wght@400;700&display=swap"
+            rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/user.js"></script>
     <title>3분 부동산 admin</title>
@@ -25,171 +25,172 @@
 </head>
 
 <body>
-    <div class="wrap clear">
-        <header>
-            <h1>
-                <a href="index.html">
-                    <i class="fas fa-home"></i>
-                    3분 부동산
+<div class="wrap clear">
+    <header>
+        <h1>
+            <a href="index.html">
+                <i class="fas fa-home"></i>
+                3분 부동산
+            </a>
+        </h1>
+    </header>
+    <nav>
+        <ul>
+            <li class="login_info">
+                <a href="">
+                    <img
+                            id="profile-picture"
+                            src=""
+                            alt="Profile"
+                            class="profile"
+                    />
+                    <h3 id="profile-name"></h3>
                 </a>
-            </h1>
-        </header>
-        <nav>
-            <ul>
-                <li class="login_info">
-                    <a href="">
-                        <img
-                                id="profile-picture"
-                                src=""
-                                alt="Profile"
-                                class="profile"
-                        />
-                        <h3 id="profile-name"></h3>
-                    </a>
-                </li>
-                <li>
-                    <a href="index.html">
-                        <i class="fas fa-building"></i>
-                        <span>현장 LIST</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="customer.html">
-                        <i class="fas fa-address-book"></i>
-                        <span>고객 LIST</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        <div class="sec_aside">
-            <section class="">
-                <div class="top">
-                    <div class="search_bar">
-                        <input type="search">
-                        <a href=""><i class="fas fa-search"></i></a>
-                    </div>
-                    <button class="add_btn"><i class="fas fa-user-plus"></i></button>
+            </li>
+            <li>
+                <a href="index.html">
+                    <i class="fas fa-building"></i>
+                    <span>현장 LIST</span>
+                </a>
+            </li>
+            <li>
+                <a href="customer.html">
+                    <i class="fas fa-address-book"></i>
+                    <span>고객 LIST</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div class="sec_aside">
+        <section class="">
+            <div class="top">
+                <div class="search_bar">
+                    <input type="search" id="tb-search"/>
+                    <a href="" id="btn-search"><i class="fas fa-search"></i></a>
                 </div>
-                <ul class="table_title">
-                    <li>아이디</li>
-                    <li>번호</li>
-                    <li>이름</li>
-                    <li>성별</li>
-                    <li>연락처</li>
-                    <li>수정</li>
-                    <li>삭제</li>
-                    <li>상담내역</li>
-                </ul>
-                <div id="customers"></div>
-                <div id="pagenation"></div>
-            </section>
-            <aside>
-                <div class="top">
-                    <button class="add_btn">add<i class="fas fa-plus-circle"></i></button>
-                </div>
-                <div id="counsel"></div>
-            </aside>
-        </div>
-        <article class="add_modal modal">
-            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
-            <ul class="modal_popup">
-                <h2>고객정보 입력</h2>
-                <li>
-                    <label for="add_pname">이름</label>
-                    <input type="text" id="add_pname">
-                </li>
-                <li>
-                    <label for="add_gender">성별</label>
-                    <select name="" id="add_gender">
-                        <option value="남자">남자</option>
-                        <option value="여자">여자</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="add_phone">연락처</label>
-                    <input type="text" id="add_phone">
-                </li>
-            </ul>
-            <div class="button">
-                <input type="submit" value="등록">
+                <button class="add_btn"><i class="fas fa-user-plus"></i></button>
             </div>
-        </article>
-        <article class="modified_modal modal">
-            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
-            <ul class="modal_popup">
-                <h2>고객정보 입력</h2>
-                <li class="none">
-                    <label for="modi_pid">아이디</label>
-                    <input type="text" id="modi_pid">
-                </li>
-                <li>
-                    <label for="modi_pname">이름</label>
-                    <input type="text" id="modi_pname">
-                </li>
-                <li>
-                    <label for="modi_gender">성별</label>
-                    <select name="" id="modi_gender">
-                        <option value="남자">남자</option>
-                        <option value="여자">여자</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="modi_phone">연락처</label>
-                    <input type="number" id="modi_phone">
-                </li>
+            <ul class="table_title">
+                <li>아이디</li>
+                <li>번호</li>
+                <li>이름</li>
+                <li>성별</li>
+                <li>연락처</li>
+                <li>수정</li>
+                <li>삭제</li>
+                <li>상담내역</li>
             </ul>
-            <div class="button">
-                <input type="submit" value="수정">
+            <div id="customers"></div>
+            <div id="pagenation"></div>
+        </section>
+        <aside>
+            <div class="top">
+                <button class="add_btn">add<i class="fas fa-plus-circle"></i></button>
             </div>
-        </article>
-        <article class="modal add_counsel">
-            <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
-            <ul class="modal_popup">
-                <h2>상담 내용</h2>
-                <li class="none">
-                    <label for="counsel_pid">상담 고유 아이디</label>
-                    <input type="number" id="counsel_pid" disabled>
-                </li>
-                <li>
-                    <label for="counsel_day">상담 일자</label>
-                    <input type="number" id="counsel_day">
-                </li>
-                <li>
-                    <label for="counsel_placename">매물명</label>
-                    <select name="" id="counsel_placename"></select>
-                    <!-- <input type="text" id="counsel_placename"> -->
-                </li>
-                <li>
-                    <label for="customer_name">고객명</label>
-                    <input type="text" id="customer_name" disabled>
-                </li>              
-                <li>
-                    <label for="counsel_assignee">상담사</label>
-                    <input type="text" id="counsel_assignee">
-                </li>
-                <li>
-                    <label for="counsel_Interest">관심도</label>
-                    <select name="" id="counsel_interest">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="counsel_text">상담내용</label>
-                    <textarea name="" id="counsel_text" cols="10" rows="10"></textarea>
-                </li>
-            </ul>
-            <div class="button">
-                <input type="submit" value="등록">
-            </div>
-        </article>
+            <div id="counsel"></div>
+        </aside>
     </div>
-    <script src="js/util.js"></script>
-    <script src="js/pagination.js"></script>
-    <script src="js/addCounsel.js"></script>
-    <script src="js/addCustomer.js"></script>
+    <article class="add_modal modal">
+        <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
+        <ul class="modal_popup">
+            <h2>고객정보 입력</h2>
+            <li>
+                <label for="add_pname">이름</label>
+                <input type="text" id="add_pname">
+            </li>
+            <li>
+                <label for="add_gender">성별</label>
+                <select name="" id="add_gender">
+                    <option value="남자">남자</option>
+                    <option value="여자">여자</option>
+                </select>
+            </li>
+            <li>
+                <label for="add_phone">연락처</label>
+                <input type="text" id="add_phone">
+            </li>
+        </ul>
+        <div class="button">
+            <input type="submit" value="등록">
+        </div>
+    </article>
+    <article class="modified_modal modal">
+        <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
+        <ul class="modal_popup">
+            <h2>고객정보 입력</h2>
+            <li class="none">
+                <label for="modi_pid">아이디</label>
+                <input type="text" id="modi_pid">
+            </li>
+            <li>
+                <label for="modi_pname">이름</label>
+                <input type="text" id="modi_pname">
+            </li>
+            <li>
+                <label for="modi_gender">성별</label>
+                <select name="" id="modi_gender">
+                    <option value="남자">남자</option>
+                    <option value="여자">여자</option>
+                </select>
+            </li>
+            <li>
+                <label for="modi_phone">연락처</label>
+                <input type="number" id="modi_phone">
+            </li>
+        </ul>
+        <div class="button">
+            <input type="submit" value="수정">
+        </div>
+    </article>
+    <article class="modal add_counsel">
+        <a href="" class="close_btn"><i class="fas fa-times-circle"></i></a>
+        <ul class="modal_popup">
+            <h2>상담 내용</h2>
+            <li class="none">
+                <label for="counsel_pid">상담 고유 아이디</label>
+                <input type="number" id="counsel_pid" disabled>
+            </li>
+            <li>
+                <label for="counsel_day">상담 일자</label>
+                <input type="number" id="counsel_day">
+            </li>
+            <li>
+                <label for="counsel_placename">매물명</label>
+                <select name="" id="counsel_placename"></select>
+                <!-- <input type="text" id="counsel_placename"> -->
+            </li>
+            <li>
+                <label for="customer_name">고객명</label>
+                <input type="text" id="customer_name" disabled>
+            </li>
+            <li>
+                <label for="counsel_assignee">상담사</label>
+                <input type="text" id="counsel_assignee">
+            </li>
+            <li>
+                <label for="counsel_Interest">관심도</label>
+                <select name="" id="counsel_interest">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </li>
+            <li>
+                <label for="counsel_text">상담내용</label>
+                <textarea name="" id="counsel_text" cols="10" rows="10"></textarea>
+            </li>
+        </ul>
+        <div class="button">
+            <input type="submit" value="등록">
+        </div>
+    </article>
+</div>
+<script src="js/util.js"></script>
+<script src="js/pagination.js"></script>
+<script src="js/search.js"></script>
+<script src="js/addCounsel.js"></script>
+<script src="js/addCustomer.js"></script>
 </body>
 
 </html>

@@ -96,7 +96,8 @@ function paging(startPage, endPage) {
     // 각 번호 클릭 시 번호 색 지정되는 스크립트
     function pageWrapBtn(e) {
         e.preventDefault();
-        reload(e.target.textContent);
+        const query = document.getElementById("tb-search").value;
+        reload(e.target.textContent, query);
     }
 
     const pageSpan = document.querySelectorAll("#pagenation span");
@@ -104,7 +105,6 @@ function paging(startPage, endPage) {
     if (pageNum > 10) {
         pageNum %= 10;
     }
-    debugger;
     pageSpan[parseInt(pageNum) - 1].classList.add("on");
 }
 
@@ -122,8 +122,8 @@ function nextBtnWork(e) {
     s += 10;
 
     console.log(`startPage = ${s}`);
-    debugger;
-    reload(s);
+    const query = document.getElementById("tb-search").value;
+    reload(s, query);
 }
 
 function prevBtnWork(e) {
@@ -141,6 +141,6 @@ function prevBtnWork(e) {
     if (s <= 0) {
         s = 1;
     }
-
-    reload(s);
+    const query = document.getElementById("tb-search").value;
+    reload(s, query);
 }
